@@ -113,7 +113,7 @@ void Error_Handler(void);
 ///////////////////////////////////////////////
 ////////////////////////////////////////////
 #define CONF_FILENAME "boot.ini"
-#define EE_ADDR_VERSION	0
+#define EE_ADDR_VERSION	10
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

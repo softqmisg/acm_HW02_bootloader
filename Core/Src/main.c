@@ -41,7 +41,7 @@
 
 /* USER CODE BEGIN PV */
 uint32_t __attribute__((section(".newsection"))) sharedmem;
-uint16_t VirtAddVarTab[NB_OF_VAR] = { 0, 0, 0 };
+uint16_t VirtAddVarTab[NB_OF_VAR] = { 10, 0, 0 };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,17 +92,19 @@ int main(void) {
   MX_IWDG_Init();
 #endif
 	/* USER CODE BEGIN 2 */
-
+  uint16_t r;
 	RetargetInit(&huart3);
 	printf("starting bootloader,shared mem= %lu.\n\r", sharedmem);
 	HAL_FLASH_Unlock();
-	HAL_Delay(200);
-	if (EE_Init() != EE_OK) {
-		printf("EE  prom iNit problem\n\r");
+	if ((r=EE_Init()) != EE_OK) {
+		printf("EEprom Init problem:%d\n\r",r);
 	}
+	HAL_Delay(500);
 	uint16_t current_version;
 	VirtAddVarTab[0] = EE_ADDR_VERSION;
-	EE_ReadVariable(VirtAddVarTab[0], &current_version);
+	if((r=EE_ReadVariable(VirtAddVarTab[0], &current_version))!=EE_OK)
+		printf("EEprom Read error:%d\n\r",r);
+
 	HAL_FLASH_Lock();
 	printf("version of firmware:%d.\n\r", current_version);
 

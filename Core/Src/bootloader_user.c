@@ -319,9 +319,9 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
 		if (cntr % 256 == 0) {
 			/* Toggle green LED during programming every 958byte */
 			printf("%d %% was flahsed(%lu/%lu)\n\r",
-					(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize),
+					(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize)+1,
 					(cntr * 4), (uint32_t) filesize);
-			sprintf(tmp_str,"%03d%%_flashed",(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize));
+			sprintf(tmp_str,"%03d%%_flashed",(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize)+1);
 			draw_text(tmp_str, 0, 20, Tahoma8, 1, 0);
 			glcd_refresh();
 		}
@@ -382,9 +382,9 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
 		if (cntr % 256 == 0) {
 			/* Toggle green LED during verification */
 			printf("%d %% was verified(%lu/%lu)\n\r",
-					(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize),
+					(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize)+1,
 					(cntr * 4), (uint32_t) filesize);
-			sprintf(tmp_str,"%03d%% verified",(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize));
+			sprintf(tmp_str,"%03d%% verified",(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize)+1);
 			draw_text(tmp_str, 0, 30, Tahoma8, 1, 0);
 			glcd_refresh();
 
@@ -418,24 +418,18 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
 	printf("flashed programmed & verified\n\r");
 	if(HAL_FLASH_Unlock()!=HAL_OK)
 		printf("flash unlock error\n\r");
-	HAL_Delay(500);
-	if (EE_Init() != EE_OK) {
-		printf("EE  prom iNit problem\n\r");
-	}
-	HAL_Delay(500);
 	VirtAddVarTab[0] = EE_ADDR_VERSION;
 	uint16_t r;
 	if ((r = EE_WriteVariable(VirtAddVarTab[0], (uint16_t) version))
 			!= HAL_OK) {
 		printf("EE Write Error %d\n\r", r);
 	}
+	HAL_Delay(500);
 	uint16_t Data;
 	if((r=EE_ReadVariable(VirtAddVarTab[0], &Data))!=HAL_OK){
 		printf("EE Read Error %d\n\r", r);;
 	}
-	HAL_Delay(100);
 	printf("Version Write in Flash %d\n\r", Data);
-
 	HAL_Delay(500);
 	HAL_FLASH_Lock();
 	return FLASH_WRITE_OK;
