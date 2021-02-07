@@ -74,7 +74,7 @@
 #define PAGE0_ID               FLASH_SECTOR_1
 
 #define PAGE1_BASE_ADDRESS    ((uint32_t)(EEPROM_START_ADDRESS + PAGE_SIZE))
-#define PAGE1_END_ADDRESS     ((uint32_t)(EEPROM_START_ADDRESS + (2 * PAGE_SIZE - 1)))
+#define PAGE1_END_ADDRESS     ((uint32_t)(EEPROM_START_ADDRESS + (PAGE_SIZE+ PAGE_SIZE - 1)))
 #define PAGE1_ID               FLASH_SECTOR_2
 
 /* Used Flash pages for EEPROM emulation */

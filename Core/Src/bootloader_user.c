@@ -292,7 +292,9 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
 	cntr = 0;
 	Bootloader_FlashBegin(); //unlock flash
 	do {
+#if __WATCHDOG_ENABLE__
 		HAL_IWDG_Refresh(&hiwdg);
+#endif
 		data = 0xFFFFFFFF; // flash write is in 32bit mode write
 		if (ID_mem == SD_ID)
 			fr = f_read(&SDFile, &data, 4, &num);
@@ -319,7 +321,7 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
 			printf("%d %% was flahsed(%lu/%lu)\n\r",
 					(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize),
 					(cntr * 4), (uint32_t) filesize);
-			sprintf(tmp_str,"%03d%% flashed",(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize));
+			sprintf(tmp_str,"%03d%%_flashed",(uint8_t) ((uint32_t) (cntr * 4) * 100 / (uint32_t) filesize));
 			draw_text(tmp_str, 0, 20, Tahoma8, 1, 0);
 			glcd_refresh();
 		}
@@ -354,7 +356,9 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
 	addr = APP_ADDRESS;
 	cntr = 0;
 	do {
+#if __WATCHDOG_ENABLE__
 		HAL_IWDG_Refresh(&hiwdg);
+#endif
 		data = 0xFFFFFFFF;
 		if (ID_mem == SD_ID)
 			fr = f_read(&SDFile, &data, 4, &num);
@@ -412,15 +416,27 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
 		    }
 #endif
 	printf("flashed programmed & verified\n\r");
-	HAL_FLASH_Unlock();
+	if(HAL_FLASH_Unlock()!=HAL_OK)
+		printf("flash unlock error\n\r");
+	HAL_Delay(500);
+	if (EE_Init() != EE_OK) {
+		printf("EE  prom iNit problem\n\r");
+	}
+	HAL_Delay(500);
 	VirtAddVarTab[0] = EE_ADDR_VERSION;
 	uint16_t r;
 	if ((r = EE_WriteVariable(VirtAddVarTab[0], (uint16_t) version))
 			!= HAL_OK) {
 		printf("EE Write Error %d\n\r", r);
 	}
-	printf("Version Write in Flash %d\n\r", version);
+	uint16_t Data;
+	if((r=EE_ReadVariable(VirtAddVarTab[0], &Data))!=HAL_OK){
+		printf("EE Read Error %d\n\r", r);;
+	}
 	HAL_Delay(100);
+	printf("Version Write in Flash %d\n\r", Data);
+
+	HAL_Delay(500);
 	HAL_FLASH_Lock();
 	return FLASH_WRITE_OK;
 }

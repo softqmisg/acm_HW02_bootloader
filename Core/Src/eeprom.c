@@ -49,7 +49,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "eeprom.h"
-
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -112,7 +111,7 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-//          SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
+          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
         }
       }
       else if (PageStatus1 == RECEIVE_DATA) /* Page0 erased, Page1 receive */
@@ -126,7 +125,7 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-//          SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
+          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
         }
         /* Mark Page1 as valid */
         FlashStatus = HAL_FLASH_Program(TYPEPROGRAM_HALFWORD, PAGE1_BASE_ADDRESS, VALID_PAGE);
@@ -194,7 +193,7 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-//          SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
+          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
         }
       }
       else if (PageStatus1 == ERASED) /* Page0 receive, Page1 erased */
@@ -211,7 +210,7 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-//          SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
+          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
         }
         /* Mark Page0 as valid */
         FlashStatus = HAL_FLASH_Program(TYPEPROGRAM_HALFWORD, PAGE0_BASE_ADDRESS, VALID_PAGE);
@@ -258,7 +257,7 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-//          SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
+          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
         }
       }
       else /* Page0 valid, Page1 receive */
@@ -306,7 +305,7 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-//          SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
+          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
         }
       }
       break;
@@ -475,7 +474,7 @@ static HAL_StatusTypeDef EE_Format(void)
     {
       return FlashStatus;
     }
-//    SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
+    //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
   }
   /* Set Page0 as valid page: Write VALID_PAGE at Page0 base address */
   FlashStatus = HAL_FLASH_Program(TYPEPROGRAM_HALFWORD, PAGE0_BASE_ADDRESS, VALID_PAGE); 
@@ -495,7 +494,7 @@ static HAL_StatusTypeDef EE_Format(void)
     {
       return FlashStatus;
     }
-//    SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
+    //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
   }
   
   return HAL_OK;
