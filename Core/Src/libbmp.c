@@ -6,7 +6,6 @@
  *      customized from:https://github.com/marc-q/libbmp
  */
 #include "libbmp.h"
-#include"iwdg.h"
 // BMP_HEADER
 //void bmp_header_init_df(bmp_header *header, const int width, const int height) {
 //	header->bfSize = (sizeof(bmp_pixel) * width + BMP_GET_PADDING(width))
@@ -57,13 +56,12 @@ enum bmp_error bmp_header_read(bmp_header *header, FIL *img_file) {
 
 	// Check if its an bmp file by comparing the magic nbr:
 //	if (fread(&magic, sizeof(magic), 1, img_file) != 1 || magic != BMP_MAGIC) {
-	if (f_read(img_file, &magic, sizeof(magic), &readbytes)
-			!= FR_OK|| magic != BMP_MAGIC) {
+	if (f_read(img_file, &magic, sizeof(magic), &readbytes) != FR_OK || magic != BMP_MAGIC) {
 
 		return BMP_INVALID_FILE;
 	}
 	//if (f_read(header, sizeof(bmp_header), 1, img_file) != 1) {
-	if (f_read(img_file, header, sizeof(bmp_header), &readbytes) != FR_OK) {
+	if (f_read(img_file, header,sizeof(bmp_header), &readbytes) != FR_OK) {
 		return BMP_ERROR;
 	}
 
@@ -87,7 +85,7 @@ void bmp_img_alloc(bmp_img *img) {
 	const size_t w = abs(img->img_header.biWidth);
 
 	// Allocate the required memory for the pixels:
-	img->img_pixels = malloc(sizeof(unsigned char) * h * w);
+	img->img_pixels = malloc(sizeof(unsigned char) *h*w);
 
 //	for (size_t y = 0; y < h; y++) {
 //		img->img_pixels[y] = malloc(
@@ -163,31 +161,24 @@ enum bmp_error bmp_img_read(bmp_img *img, const char *filename) {
 	const enum bmp_error err = bmp_header_read(&img->img_header, &img_file);
 	////////////////////////////read color table///////////////////////////////
 	unsigned char **biColorTable;
-	biColorTable = malloc(sizeof(unsigned char) * img->img_header.biBitCount);
+	biColorTable = malloc(sizeof(unsigned char)*img->img_header.biBitCount);
 
 	for (size_t y = 0; y < img->img_header.biBitCount; y++) {
-		biColorTable[y] = malloc(sizeof(unsigned char) * 4);
-		f_read(&img_file, biColorTable[y], sizeof(unsigned char) * 4,
-				&readbytes);
-		if (readbytes != 4) {
-			f_close(&img_file);
-			return BMP_ERROR;
-		}
-#if __WATCHDOG_ENABLE__
-			HAL_IWDG_Refresh(&hiwdg);
-#endif
+			biColorTable[y] = malloc(sizeof(unsigned char)*4);
+			f_read(&img_file,biColorTable[y], sizeof(unsigned char)* 4,&readbytes);
+			if ( readbytes!= 4) {
+				f_close(&img_file);
+				return BMP_ERROR;
+			}
 	}
 	for (size_t y = 0; y < img->img_header.biBitCount; y++) {
-		f_read(&img_file, biColorTable[y], sizeof(unsigned char) * 4,
-				&readbytes);
-		if (readbytes != 4) {
-			f_close(&img_file);
-			return BMP_ERROR;
-		}
-		free(biColorTable[y]);
-#if __WATCHDOG_ENABLE__
-			HAL_IWDG_Refresh(&hiwdg);
-#endif
+			f_read(&img_file,biColorTable[y], sizeof(unsigned char)* 4,&readbytes);
+			if ( readbytes!= 4) {
+				f_close(&img_file);
+				return BMP_ERROR;
+			}
+			free(biColorTable[y]);
+
 	}
 
 	if (err != BMP_OK) {
@@ -204,24 +195,21 @@ enum bmp_error bmp_img_read(bmp_img *img, const char *filename) {
 	const size_t padding = BMP_GET_PADDING(img->img_header.biWidth);
 
 	// Needed to compare the return value of fread
-	const size_t items = img->img_header.biWidth / 8;
+	const size_t items = img->img_header.biWidth/8;
 
 	// Read the content:
 	for (size_t y = 0; y < h; y++) {
 		// Read a whole row of pixels from the file:
-		f_read(&img_file, &img->img_pixels[abs(offset - y) * items],
-				sizeof(unsigned char) * items, &readbytes);
-		if (readbytes != items) {
+		f_read(&img_file,&img->img_pixels[abs(offset - y)*items], sizeof(unsigned char)* items,&readbytes);
+		if ( readbytes!= items) {
 			f_close(&img_file);
 			return BMP_ERROR;
 		}
 
 		// Skip the padding:
 		//f_seek(img_file, padding, SEEK_CUR);
-		f_lseek(&img_file, f_tell(&img_file) + padding);
-#if __WATCHDOG_ENABLE__
-			HAL_IWDG_Refresh(&hiwdg);
-#endif
+		f_lseek(&img_file, f_tell(&img_file)+padding);
+
 	}
 
 	// NOTE: All good!

@@ -38,13 +38,13 @@ void glcd_data(uint8_t data) {
 
 	while (bits) {
 		ST7567_SCLK_RESET;
-		st7567_usdelay(1);
+		//st7567_usdelay(1);
 		if (data & bits)
 			ST7567_SID_SET;
 		else
 			ST7567_SID_RESET;
 		ST7567_SCLK_SET;
-		st7567_usdelay(1);
+		//st7567_usdelay(1);
 		bits >>= 1;
 	}
 	ST7567_CS_SET;
@@ -61,13 +61,13 @@ void glcd_command(uint8_t command) {
 
 	while (bits) {
 		ST7567_SCLK_RESET;
-		st7567_usdelay(1);
+//		st7567_usdelay(1);
 		if (command & bits)
 			ST7567_SID_SET;
 		else
 			ST7567_SID_RESET;
 		ST7567_SCLK_SET;
-		st7567_usdelay(1);
+//		st7567_usdelay(1);
 		bits >>= 1;
 	}
 	ST7567_CS_SET;

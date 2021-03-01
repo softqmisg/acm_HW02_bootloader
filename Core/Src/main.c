@@ -94,6 +94,7 @@ int main(void) {
 	/* USER CODE BEGIN 2 */
   uint16_t r;
 	RetargetInit(&huart3);
+	////////////////////////////////////////////////////////////////////////////
 	printf("starting bootloader,shared mem= %lu.\n\r", sharedmem);
 	HAL_FLASH_Unlock();
 	if ((r=EE_Init()) != EE_OK) {
@@ -125,16 +126,21 @@ int main(void) {
 	FRESULT fr;
 	if ((fr = f_mount(&SDFatFS, (TCHAR const*) SDPath, 1)) != FR_OK) {
 		printf("error mount SD\n\r");
+	} else {
+		bmp_img img;
+		if (bmp_img_read(&img, "logo.bmp") == BMP_OK)
+			draw_bmp_h(0, 0, img.img_header.biWidth, img.img_header.biHeight,
+					img.img_pixels, 1);
+		else
+			printf("bmp file error\n\r");
+		f_mount(&SDFatFS, "", 1);
+		bmp_img_free(&img);
+		draw_rectangle(0, 0, 127 , 63,1);
+		glcd_refresh();
+		HAL_Delay(1000);
 	}
-	bmp_img img;
-	bmp_img_read(&img, "logo.bmp");
-	f_mount(&SDFatFS, "", 1);
-	draw_bmp_h(0, 0, img.img_header.biWidth, img.img_header.biHeight,
-			img.img_pixels, 1);
-	bmp_img_free(&img);
-	glcd_refresh();
-	HAL_Delay(1500);
 	glcd_blank();
+
 	draw_text("Bootloader...", 0, 0, Tahoma8, 1, 0);
 	glcd_refresh();
 	////////////////////////////////////////////////////////////////////////////
