@@ -9,45 +9,45 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .rodata       000011e8  080176e0  080176e0  000276e0  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  080188c8  080188c8  0003020c  2**0
+  3 .ARM.extab    00000000  080188c8  080188c8  00030258  2**0
                   CONTENTS
   4 .ARM          00000008  080188c8  080188c8  000288c8  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  080188d0  080188d0  0003020c  2**0
+  5 .preinit_array 00000000  080188d0  080188d0  00030258  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   6 .init_array   00000004  080188d0  080188d0  000288d0  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   7 .fini_array   00000004  080188d4  080188d4  000288d4  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         0000020c  20000000  080188d8  00030000  2**2
+  8 .data         00000258  20000000  080188d8  00030000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00005c94  2000020c  08018ae4  0003020c  2**2
+  9 .bss          00005c94  20000258  08018b30  00030258  2**2
                   ALLOC
- 10 ._user_heap_stack 00001800  20005ea0  08018ae4  00035ea0  2**0
+ 10 ._user_heap_stack 00001804  20005eec  08018b30  00035eec  2**0
                   ALLOC
  11 .newsection   00000004  10000000  10000000  00040000  2**2
                   ALLOC
- 12 .ARM.attributes 00000030  00000000  00000000  0003020c  2**0
+ 12 .ARM.attributes 00000030  00000000  00000000  00030258  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0004612a  00000000  00000000  0003023c  2**0
+ 13 .debug_info   00046115  00000000  00000000  00030288  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_abbrev 000094d2  00000000  00000000  00076366  2**0
+ 14 .debug_abbrev 000094d2  00000000  00000000  0007639d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_loc    000194e4  00000000  00000000  0007f838  2**0
+ 15 .debug_loc    000194c4  00000000  00000000  0007f86f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_aranges 00001ba8  00000000  00000000  00098d20  2**3
+ 16 .debug_aranges 00001ba8  00000000  00000000  00098d38  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_ranges 000025f8  00000000  00000000  0009a8c8  2**3
+ 17 .debug_ranges 000025f8  00000000  00000000  0009a8e0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_macro  0002dc0b  00000000  00000000  0009cec0  2**0
+ 18 .debug_macro  0002dc02  00000000  00000000  0009ced8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .debug_line   000265ff  00000000  00000000  000caacb  2**0
+ 19 .debug_line   000265f3  00000000  00000000  000caada  2**0
                   CONTENTS, READONLY, DEBUGGING
- 20 .debug_str    000e0dd5  00000000  00000000  000f10ca  2**0
+ 20 .debug_str    000e0dba  00000000  00000000  000f10cd  2**0
                   CONTENTS, READONLY, DEBUGGING
- 21 .comment      0000007b  00000000  00000000  001d1e9f  2**0
+ 21 .comment      0000007b  00000000  00000000  001d1e87  2**0
                   CONTENTS, READONLY
- 22 .debug_frame  0000596c  00000000  00000000  001d1f1c  2**2
+ 22 .debug_frame  0000596c  00000000  00000000  001d1f04  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -64,7 +64,7 @@ Disassembly of section .text:
  800c012:	2301      	movs	r3, #1
  800c014:	7023      	strb	r3, [r4, #0]
  800c016:	bd10      	pop	{r4, pc}
- 800c018:	2000020c 	.word	0x2000020c
+ 800c018:	20000258 	.word	0x20000258
  800c01c:	00000000 	.word	0x00000000
  800c020:	080176c8 	.word	0x080176c8
 
@@ -77,7 +77,7 @@ Disassembly of section .text:
  800c02e:	f3af 8000 	nop.w
  800c032:	bd08      	pop	{r3, pc}
  800c034:	00000000 	.word	0x00000000
- 800c038:	20000210 	.word	0x20000210
+ 800c038:	2000025c 	.word	0x2000025c
  800c03c:	080176c8 	.word	0x080176c8
 
 0800c040 <strlen>:
@@ -750,8 +750,8 @@ void Peripherials_DeInit(void) {
 	MX_GPIO_DeInit();
  800c556:	f000 be23 	b.w	800d1a0 <MX_GPIO_DeInit>
  800c55a:	bf00      	nop
- 800c55c:	200016bc 	.word	0x200016bc
- 800c560:	2000167c 	.word	0x2000167c
+ 800c55c:	20001708 	.word	0x20001708
+ 800c560:	200016c8 	.word	0x200016c8
 
 0800c564 <Check_SDCard>:
 /*** Bootloader ***************************************************************/
@@ -847,13 +847,13 @@ uint8_t Check_SDCard(char *firmware_path, uint16_t *firmware_version,
  800c5f2:	bf00      	nop
  800c5f4:	080176e0 	.word	0x080176e0
  800c5f8:	080176fa 	.word	0x080176fa
- 800c5fc:	20001725 	.word	0x20001725
- 800c600:	200047c4 	.word	0x200047c4
+ 800c5fc:	20001771 	.word	0x20001771
+ 800c600:	20004810 	.word	0x20004810
  800c604:	0801770f 	.word	0x0801770f
  800c608:	0801772c 	.word	0x0801772c
  800c60c:	08017743 	.word	0x08017743
  800c610:	08017755 	.word	0x08017755
- 800c614:	2000275c 	.word	0x2000275c
+ 800c614:	200027a8 	.word	0x200027a8
  800c618:	08017761 	.word	0x08017761
 
 0800c61c <Check_USBMEM>:
@@ -1020,15 +1020,15 @@ uint8_t Check_USBMEM(char *firmware_path, uint16_t *firmware_version,
 		return MEM_NOT_PRESENT;
  800c72c:	2001      	movs	r0, #1
  800c72e:	e79e      	b.n	800c66e <Check_USBMEM+0x52>
- 800c730:	20005800 	.word	0x20005800
+ 800c730:	2000584c 	.word	0x2000584c
  800c734:	080177b2 	.word	0x080177b2
- 800c738:	20001721 	.word	0x20001721
- 800c73c:	2000378c 	.word	0x2000378c
+ 800c738:	2000176d 	.word	0x2000176d
+ 800c73c:	200037d8 	.word	0x200037d8
  800c740:	0801777a 	.word	0x0801777a
  800c744:	0801772c 	.word	0x0801772c
  800c748:	08017793 	.word	0x08017793
  800c74c:	080177a6 	.word	0x080177a6
- 800c750:	2000172c 	.word	0x2000172c
+ 800c750:	20001778 	.word	0x20001778
  800c754:	08017761 	.word	0x08017761
  800c758:	080177c3 	.word	0x080177c3
 
@@ -1286,19 +1286,19 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
  800c8bc:	20000004 	.word	0x20000004
  800c8c0:	080177e5 	.word	0x080177e5
  800c8c4:	080177f7 	.word	0x080177f7
- 800c8c8:	20001725 	.word	0x20001725
- 800c8cc:	200047c4 	.word	0x200047c4
+ 800c8c8:	20001771 	.word	0x20001771
+ 800c8cc:	20004810 	.word	0x20004810
  800c8d0:	0801788d 	.word	0x0801788d
  800c8d4:	0801772c 	.word	0x0801772c
  800c8d8:	10000000 	.word	0x10000000
  800c8dc:	0801783d 	.word	0x0801783d
  800c8e0:	08017863 	.word	0x08017863
  800c8e4:	08017879 	.word	0x08017879
- 800c8e8:	20001721 	.word	0x20001721
- 800c8ec:	2000378c 	.word	0x2000378c
- 800c8f0:	2000172c 	.word	0x2000172c
+ 800c8e8:	2000176d 	.word	0x2000176d
+ 800c8ec:	200037d8 	.word	0x200037d8
+ 800c8f0:	20001778 	.word	0x20001778
  800c8f4:	080178c8 	.word	0x080178c8
- 800c8f8:	2000275c 	.word	0x2000275c
+ 800c8f8:	200027a8 	.word	0x200027a8
  800c8fc:	08017761 	.word	0x08017761
  800c900:	080178a6 	.word	0x080178a6
  800c904:	080178ec 	.word	0x080178ec
@@ -1596,10 +1596,10 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
  800cb2e:	e668      	b.n	800c802 <Write_Flash+0x82>
  800cb30:	0801794a 	.word	0x0801794a
  800cb34:	08017962 	.word	0x08017962
- 800cb38:	2000172c 	.word	0x2000172c
+ 800cb38:	20001778 	.word	0x20001778
  800cb3c:	080179ba 	.word	0x080179ba
  800cb40:	08017e05 	.word	0x08017e05
- 800cb44:	2000275c 	.word	0x2000275c
+ 800cb44:	200027a8 	.word	0x200027a8
  800cb48:	080179c9 	.word	0x080179c9
  800cb4c:	080179e1 	.word	0x080179e1
  800cb50:	080179f5 	.word	0x080179f5
@@ -1643,7 +1643,7 @@ void MX_CRC_Init(void)
  800cb9a:	f001 b8e9 	b.w	800dd70 <Error_Handler>
 }
  800cb9e:	bd08      	pop	{r3, pc}
- 800cba0:	20001484 	.word	0x20001484
+ 800cba0:	200014d0 	.word	0x200014d0
  800cba4:	40023000 	.word	0x40023000
 
 0800cba8 <HAL_CRC_MspInit>:
@@ -2106,7 +2106,7 @@ static uint16_t EE_VerifyPageFullWriteVariable(uint16_t VirtAddress, uint16_t Da
  800ce08:	d111      	bne.n	800ce2e <EE_Init+0xc6>
  800ce0a:	3401      	adds	r4, #1
         for (VarIdx = 0; VarIdx < NB_OF_VAR; VarIdx++)
- 800ce0c:	2c03      	cmp	r4, #3
+ 800ce0c:	2c29      	cmp	r4, #41	; 0x29
  800ce0e:	d1f1      	bne.n	800cdf4 <EE_Init+0x8c>
         FlashStatus = HAL_FLASH_Program(TYPEPROGRAM_HALFWORD, PAGE0_BASE_ADDRESS, VALID_PAGE);
  800ce10:	2200      	movs	r2, #0
@@ -2190,7 +2190,7 @@ static uint16_t EE_VerifyPageFullWriteVariable(uint16_t VirtAddress, uint16_t Da
  800ce9a:	d111      	bne.n	800cec0 <EE_Init+0x158>
  800ce9c:	3401      	adds	r4, #1
         for (VarIdx = 0; VarIdx < NB_OF_VAR; VarIdx++)
- 800ce9e:	2c03      	cmp	r4, #3
+ 800ce9e:	2c29      	cmp	r4, #41	; 0x29
  800cea0:	d1f1      	bne.n	800ce86 <EE_Init+0x11e>
         FlashStatus = HAL_FLASH_Program(TYPEPROGRAM_HALFWORD, PAGE1_BASE_ADDRESS, VALID_PAGE);        
  800cea2:	2200      	movs	r2, #0
@@ -2235,7 +2235,7 @@ static uint16_t EE_VerifyPageFullWriteVariable(uint16_t VirtAddress, uint16_t Da
  800cee8:	08004000 	.word	0x08004000
  800ceec:	08008000 	.word	0x08008000
  800cef0:	20000004 	.word	0x20000004
- 800cef4:	20000228 	.word	0x20000228
+ 800cef4:	20000274 	.word	0x20000274
  800cef8:	08004006 	.word	0x08004006
  800cefc:	08008006 	.word	0x08008006
 
@@ -2259,8 +2259,8 @@ static uint16_t EE_VerifyPageFullWriteVariable(uint16_t VirtAddress, uint16_t Da
  800cf16:	4d2d      	ldr	r5, [pc, #180]	; (800cfcc <EE_WriteVariable+0xcc>)
   PageStatus0 = (*(__IO uint16_t*)PAGE0_BASE_ADDRESS);
  800cf18:	880a      	ldrh	r2, [r1, #0]
+  HAL_StatusTypeDef FlashStatus = HAL_OK;
   uint32_t NewPageAddress = EEPROM_START_ADDRESS;
-  uint32_t OldPageAddress = 0;
   uint16_t OldPageId=0;
   uint16_t ValidPage = PAGE0, VarIdx = 0;
   uint16_t EepromStatus = 0, ReadStatus = 0;
@@ -2278,9 +2278,9 @@ static uint16_t EE_VerifyPageFullWriteVariable(uint16_t VirtAddress, uint16_t Da
       else if (PageStatus1 == VALID_PAGE)
  800cf26:	2b00      	cmp	r3, #0
  800cf28:	d14c      	bne.n	800cfc4 <EE_WriteVariable+0xc4>
-
-    /* Old page address  where variable will be moved from */
-    OldPageAddress = PAGE1_BASE_ADDRESS;
+  {
+    /* New page address where variable will be moved to */
+    NewPageAddress = PAGE0_BASE_ADDRESS;
 
     /* Old page ID where variable will be taken from */
     OldPageId = PAGE1_ID;
@@ -2332,7 +2332,7 @@ static uint16_t EE_VerifyPageFullWriteVariable(uint16_t VirtAddress, uint16_t Da
  800cf6a:	d11c      	bne.n	800cfa6 <EE_WriteVariable+0xa6>
  800cf6c:	3601      	adds	r6, #1
   for (VarIdx = 0; VarIdx < NB_OF_VAR; VarIdx++)
- 800cf6e:	2e03      	cmp	r6, #3
+ 800cf6e:	2e29      	cmp	r6, #41	; 0x29
  800cf70:	d1f6      	bne.n	800cf60 <EE_WriteVariable+0x60>
   pEraseInit.TypeErase = TYPEERASE_SECTORS;
  800cf72:	2300      	movs	r3, #0
@@ -2385,7 +2385,7 @@ static uint16_t EE_VerifyPageFullWriteVariable(uint16_t VirtAddress, uint16_t Da
  800cfc6:	e7ea      	b.n	800cf9e <EE_WriteVariable+0x9e>
  800cfc8:	08004000 	.word	0x08004000
  800cfcc:	08008000 	.word	0x08008000
- 800cfd0:	20000228 	.word	0x20000228
+ 800cfd0:	20000274 	.word	0x20000274
  800cfd4:	20000004 	.word	0x20000004
 
 0800cfd8 <MX_GPIO_Init>:
@@ -2718,10 +2718,10 @@ void MX_GPIO_DeInit(void) {
  800d1ca:	f44f 4110 	mov.w	r1, #36864	; 0x9000
  800d1ce:	4832      	ldr	r0, [pc, #200]	; (800d298 <MX_GPIO_DeInit+0xf8>)
  800d1d0:	f002 f8b4 	bl	800f33c <HAL_GPIO_DeInit>
-	HAL_GPIO_Init(GPIOH, GPIO_PIN_8 | GPIO_PIN_7);
+	HAL_GPIO_DeInit(GPIOH, GPIO_PIN_8 | GPIO_PIN_7);
  800d1d4:	f44f 71c0 	mov.w	r1, #384	; 0x180
  800d1d8:	4830      	ldr	r0, [pc, #192]	; (800d29c <MX_GPIO_DeInit+0xfc>)
- 800d1da:	f001 ffcf 	bl	800f17c <HAL_GPIO_Init>
+ 800d1da:	f002 f8af 	bl	800f33c <HAL_GPIO_DeInit>
 	/* GPIO Ports Clock Enable */
 	__HAL_RCC_GPIOE_CLK_ENABLE();
  800d1de:	4b30      	ldr	r3, [pc, #192]	; (800d2a0 <MX_GPIO_DeInit+0x100>)
@@ -4164,15 +4164,15 @@ int main(void) {
  800db68:	e768      	b.n	800da3c <main+0x1bc>
  800db6a:	bf00      	nop
  800db6c:	10000000 	.word	0x10000000
- 800db70:	2000167c 	.word	0x2000167c
+ 800db70:	200016c8 	.word	0x200016c8
  800db74:	08017b20 	.word	0x08017b20
  800db78:	08017b47 	.word	0x08017b47
  800db7c:	20000004 	.word	0x20000004
  800db80:	08017b60 	.word	0x08017b60
  800db84:	08017b77 	.word	0x08017b77
  800db88:	40021000 	.word	0x40021000
- 800db8c:	20001725 	.word	0x20001725
- 800db90:	200047c4 	.word	0x200047c4
+ 800db8c:	20001771 	.word	0x20001771
+ 800db90:	20004810 	.word	0x20004810
  800db94:	08017b91 	.word	0x08017b91
  800db98:	08017e05 	.word	0x08017e05
  800db9c:	08017bbc 	.word	0x08017bbc
@@ -4407,8 +4407,8 @@ void RetargetInit(UART_HandleTypeDef *huart) {
  800dd80:	4619      	mov	r1, r3
  800dd82:	6880      	ldr	r0, [r0, #8]
  800dd84:	f008 bb66 	b.w	8016454 <setvbuf>
- 800dd88:	2000148c 	.word	0x2000148c
- 800dd8c:	2000003c 	.word	0x2000003c
+ 800dd88:	200014d8 	.word	0x200014d8
+ 800dd8c:	20000088 	.word	0x20000088
 
 0800dd90 <_isatty>:
 }
@@ -4474,7 +4474,7 @@ int _write(int fd, char *ptr, int len) {
 	return -1;
  800ddd2:	f04f 34ff 	mov.w	r4, #4294967295
  800ddd6:	e7f6      	b.n	800ddc6 <_write+0x1e>
- 800ddd8:	2000148c 	.word	0x2000148c
+ 800ddd8:	200014d8 	.word	0x200014d8
 
 0800dddc <_close>:
 
@@ -4551,7 +4551,7 @@ int _read(int fd, char *ptr, int len) {
  800de28:	f04f 30ff 	mov.w	r0, #4294967295
  800de2c:	e7f7      	b.n	800de1e <_read+0x1a>
  800de2e:	bf00      	nop
- 800de30:	2000148c 	.word	0x2000148c
+ 800de30:	200014d8 	.word	0x200014d8
 
 0800de34 <_fstat>:
 
@@ -4668,7 +4668,7 @@ void MX_RTC_Init(void)
 }
  800deb4:	b006      	add	sp, #24
  800deb6:	bd10      	pop	{r4, pc}
- 800deb8:	20001490 	.word	0x20001490
+ 800deb8:	200014dc 	.word	0x200014dc
  800debc:	40002800 	.word	0x40002800
  800dec0:	14020807 	.word	0x14020807
 
@@ -4724,7 +4724,7 @@ void MX_SDIO_SD_Init(void)
 
 }
  800def2:	4770      	bx	lr
- 800def4:	20001570 	.word	0x20001570
+ 800def4:	200015bc 	.word	0x200015bc
  800def8:	40012c00 	.word	0x40012c00
 
 0800defc <HAL_SD_MspInit>:
@@ -4950,9 +4950,9 @@ void HAL_SD_MspInit(SD_HandleTypeDef* sdHandle)
  800e040:	40012c00 	.word	0x40012c00
  800e044:	40020800 	.word	0x40020800
  800e048:	40020c00 	.word	0x40020c00
- 800e04c:	200014b0 	.word	0x200014b0
+ 800e04c:	200014fc 	.word	0x200014fc
  800e050:	400264a0 	.word	0x400264a0
- 800e054:	20001510 	.word	0x20001510
+ 800e054:	2000155c 	.word	0x2000155c
  800e058:	40026458 	.word	0x40026458
 
 0800e05c <HAL_SD_MspDeInit>:
@@ -5260,9 +5260,9 @@ void glcd_pixel(unsigned char x, unsigned char y, unsigned char colour) {
 			glcd_buffer[array_pos] &= 0xFF ^ (1 << (x % 8));
  800e1f2:	ea23 0300 	bic.w	r3, r3, r0
  800e1f6:	e7fa      	b.n	800e1ee <glcd_pixel+0x52>
- 800e1f8:	200015f8 	.word	0x200015f8
- 800e1fc:	200015f4 	.word	0x200015f4
- 800e200:	2000022a 	.word	0x2000022a
+ 800e1f8:	20001644 	.word	0x20001644
+ 800e1fc:	20001640 	.word	0x20001640
+ 800e200:	20000276 	.word	0x20000276
 
 0800e204 <glcd_blank>:
 
@@ -5320,7 +5320,7 @@ void glcd_blank() {
 	}
 }
  800e242:	bd38      	pop	{r3, r4, r5, pc}
- 800e244:	200015f4 	.word	0x200015f4
+ 800e244:	20001640 	.word	0x20001640
 
 0800e248 <glcd_refresh>:
 
@@ -5401,9 +5401,9 @@ void glcd_refresh() {
  800e2ba:	2d80      	cmp	r5, #128	; 0x80
  800e2bc:	d1f2      	bne.n	800e2a4 <glcd_refresh+0x5c>
  800e2be:	e7ec      	b.n	800e29a <glcd_refresh+0x52>
- 800e2c0:	2000022a 	.word	0x2000022a
- 800e2c4:	200015f8 	.word	0x200015f8
- 800e2c8:	200015f4 	.word	0x200015f4
+ 800e2c0:	20000276 	.word	0x20000276
+ 800e2c4:	20001644 	.word	0x20001644
+ 800e2c8:	20001640 	.word	0x20001640
 
 0800e2cc <glcd_backlight>:
 /*
@@ -5460,7 +5460,7 @@ void glcd_backlight(uint8_t brightness) {
 }
  800e310:	b008      	add	sp, #32
  800e312:	bd10      	pop	{r4, pc}
- 800e314:	2000163c 	.word	0x2000163c
+ 800e314:	20001688 	.word	0x20001688
 
 0800e318 <glcd_init>:
 /*
@@ -5610,9 +5610,9 @@ void glcd_contrast(char resistor_ratio, char contrast) {
 	glcd_command(contrast);
  800e3ce:	f7ff bea9 	b.w	800e124 <glcd_command>
  800e3d2:	bf00      	nop
- 800e3d4:	200015f4 	.word	0x200015f4
- 800e3d8:	200015f8 	.word	0x200015f8
- 800e3dc:	200015fa 	.word	0x200015fa
+ 800e3d4:	20001640 	.word	0x20001640
+ 800e3d8:	20001644 	.word	0x20001644
+ 800e3dc:	20001646 	.word	0x20001646
  800e3e0:	40020400 	.word	0x40020400
  800e3e4:	40021000 	.word	0x40021000
 
@@ -5668,7 +5668,7 @@ void glcd_flip_screen(unsigned char flip) {
  800e43a:	4b01      	ldr	r3, [pc, #4]	; (800e440 <glcd_flip_screen+0x58>)
  800e43c:	2203      	movs	r2, #3
  800e43e:	e7e2      	b.n	800e406 <glcd_flip_screen+0x1e>
- 800e440:	2000022a 	.word	0x2000022a
+ 800e440:	20000276 	.word	0x20000276
 
 0800e444 <HAL_MspInit>:
 /* USER CODE END 0 */
@@ -5814,7 +5814,7 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
  800e4e4:	e7fb      	b.n	800e4de <HAL_InitTick+0x62>
  800e4e6:	bf00      	nop
  800e4e8:	40023800 	.word	0x40023800
- 800e4ec:	200015fc 	.word	0x200015fc
+ 800e4ec:	20001648 	.word	0x20001648
  800e4f0:	40010000 	.word	0x40010000
  800e4f4:	000f4240 	.word	0x000f4240
 
@@ -5888,7 +5888,7 @@ void TIM1_UP_TIM10_IRQHandler(void)
  800e508:	4801      	ldr	r0, [pc, #4]	; (800e510 <TIM1_UP_TIM10_IRQHandler+0x8>)
  800e50a:	f002 be6e 	b.w	80111ea <HAL_TIM_IRQHandler>
  800e50e:	bf00      	nop
- 800e510:	200015fc 	.word	0x200015fc
+ 800e510:	20001648 	.word	0x20001648
 
 0800e514 <USART2_IRQHandler>:
 void USART2_IRQHandler(void)
@@ -5900,7 +5900,7 @@ void USART2_IRQHandler(void)
  800e514:	4801      	ldr	r0, [pc, #4]	; (800e51c <USART2_IRQHandler+0x8>)
  800e516:	f003 bb37 	b.w	8011b88 <HAL_UART_IRQHandler>
  800e51a:	bf00      	nop
- 800e51c:	200016bc 	.word	0x200016bc
+ 800e51c:	20001708 	.word	0x20001708
 
 0800e520 <USART3_IRQHandler>:
 void USART3_IRQHandler(void)
@@ -5912,7 +5912,7 @@ void USART3_IRQHandler(void)
  800e520:	4801      	ldr	r0, [pc, #4]	; (800e528 <USART3_IRQHandler+0x8>)
  800e522:	f003 bb31 	b.w	8011b88 <HAL_UART_IRQHandler>
  800e526:	bf00      	nop
- 800e528:	2000167c 	.word	0x2000167c
+ 800e528:	200016c8 	.word	0x200016c8
 
 0800e52c <SDIO_IRQHandler>:
 void SDIO_IRQHandler(void)
@@ -5924,7 +5924,7 @@ void SDIO_IRQHandler(void)
  800e52c:	4801      	ldr	r0, [pc, #4]	; (800e534 <SDIO_IRQHandler+0x8>)
  800e52e:	f002 bcad 	b.w	8010e8c <HAL_SD_IRQHandler>
  800e532:	bf00      	nop
- 800e534:	20001570 	.word	0x20001570
+ 800e534:	200015bc 	.word	0x200015bc
 
 0800e538 <DMA2_Stream3_IRQHandler>:
 void DMA2_Stream3_IRQHandler(void)
@@ -5936,7 +5936,7 @@ void DMA2_Stream3_IRQHandler(void)
  800e538:	4801      	ldr	r0, [pc, #4]	; (800e540 <DMA2_Stream3_IRQHandler+0x8>)
  800e53a:	f000 bbad 	b.w	800ec98 <HAL_DMA_IRQHandler>
  800e53e:	bf00      	nop
- 800e540:	200014b0 	.word	0x200014b0
+ 800e540:	200014fc 	.word	0x200014fc
 
 0800e544 <DMA2_Stream6_IRQHandler>:
 void DMA2_Stream6_IRQHandler(void)
@@ -5948,7 +5948,7 @@ void DMA2_Stream6_IRQHandler(void)
  800e544:	4801      	ldr	r0, [pc, #4]	; (800e54c <DMA2_Stream6_IRQHandler+0x8>)
  800e546:	f000 bba7 	b.w	800ec98 <HAL_DMA_IRQHandler>
  800e54a:	bf00      	nop
- 800e54c:	20001510 	.word	0x20001510
+ 800e54c:	2000155c 	.word	0x2000155c
 
 0800e550 <OTG_HS_IRQHandler>:
 void OTG_HS_IRQHandler(void)
@@ -5960,7 +5960,7 @@ void OTG_HS_IRQHandler(void)
  800e550:	4801      	ldr	r0, [pc, #4]	; (800e558 <OTG_HS_IRQHandler+0x8>)
  800e552:	f001 b883 	b.w	800f65c <HAL_HCD_IRQHandler>
  800e556:	bf00      	nop
- 800e558:	20005bd8 	.word	0x20005bd8
+ 800e558:	20005c24 	.word	0x20005c24
 
 0800e55c <_sbrk>:
   const uint32_t stack_limit = (uint32_t)&_estack - (uint32_t)&_Min_Stack_Size;
@@ -6010,8 +6010,8 @@ void OTG_HS_IRQHandler(void)
   return (void *)prev_heap_end;
  800e588:	e7fc      	b.n	800e584 <_sbrk+0x28>
  800e58a:	bf00      	nop
- 800e58c:	2000022c 	.word	0x2000022c
- 800e590:	20005ea0 	.word	0x20005ea0
+ 800e58c:	20000278 	.word	0x20000278
+ 800e590:	20005ef0 	.word	0x20005ef0
  800e594:	20020000 	.word	0x20020000
  800e598:	00001000 	.word	0x00001000
 
@@ -6241,7 +6241,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
 }
  800e6d8:	b00e      	add	sp, #56	; 0x38
  800e6da:	bd10      	pop	{r4, pc}
- 800e6dc:	2000163c 	.word	0x2000163c
+ 800e6dc:	20001688 	.word	0x20001688
  800e6e0:	40000800 	.word	0x40000800
 
 0800e6e4 <MX_USART2_UART_Init>:
@@ -6287,7 +6287,7 @@ void MX_USART2_UART_Init(void)
 }
  800e710:	bd08      	pop	{r3, pc}
  800e712:	bf00      	nop
- 800e714:	200016bc 	.word	0x200016bc
+ 800e714:	20001708 	.word	0x20001708
  800e718:	40004400 	.word	0x40004400
 
 0800e71c <MX_USART3_UART_Init>:
@@ -6333,7 +6333,7 @@ void MX_USART3_UART_Init(void)
 }
  800e748:	bd08      	pop	{r3, pc}
  800e74a:	bf00      	nop
- 800e74c:	2000167c 	.word	0x2000167c
+ 800e74c:	200016c8 	.word	0x200016c8
  800e750:	40004800 	.word	0x40004800
 
 0800e754 <HAL_UART_MspInit>:
@@ -6633,11 +6633,11 @@ LoopFillZerobss:
   ldr  r0, =_sdata
  800e8d4:	20000000 	.word	0x20000000
   ldr  r3, =_edata
- 800e8d8:	2000020c 	.word	0x2000020c
+ 800e8d8:	20000258 	.word	0x20000258
   ldr  r2, =_sbss
- 800e8dc:	2000020c 	.word	0x2000020c
+ 800e8dc:	20000258 	.word	0x20000258
   ldr  r3, = _ebss
- 800e8e0:	20005ea0 	.word	0x20005ea0
+ 800e8e0:	20005eec 	.word	0x20005eec
 
 0800e8e4 <ADC_IRQHandler>:
  * @retval None       
@@ -6747,8 +6747,8 @@ __weak void HAL_IncTick(void)
 }
  800e954:	4770      	bx	lr
  800e956:	bf00      	nop
- 800e958:	200016fc 	.word	0x200016fc
- 800e95c:	20000010 	.word	0x20000010
+ 800e958:	20001748 	.word	0x20001748
+ 800e95c:	2000005c 	.word	0x2000005c
 
 0800e960 <HAL_GetTick>:
   *       implementations in user file.
@@ -6762,7 +6762,7 @@ __weak uint32_t HAL_GetTick(void)
 }
  800e964:	4770      	bx	lr
  800e966:	bf00      	nop
- 800e968:	200016fc 	.word	0x200016fc
+ 800e968:	20001748 	.word	0x20001748
 
 0800e96c <HAL_Delay>:
   *       implementations in user file.
@@ -6802,7 +6802,7 @@ __weak void HAL_Delay(uint32_t Delay)
 }
  800e98c:	bd38      	pop	{r3, r4, r5, pc}
  800e98e:	bf00      	nop
- 800e990:	20000010 	.word	0x20000010
+ 800e990:	2000005c 	.word	0x2000005c
 
 0800e994 <HAL_NVIC_SetPriorityGrouping>:
 __STATIC_INLINE void __NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
@@ -7635,7 +7635,7 @@ static uint32_t DMA_CalcBaseAndBitshift(DMA_HandleTypeDef *hdma)
  800ee0a:	b003      	add	sp, #12
  800ee0c:	bdf0      	pop	{r4, r5, r6, r7, pc}
  800ee0e:	bf00      	nop
- 800ee10:	2000000c 	.word	0x2000000c
+ 800ee10:	20000058 	.word	0x20000058
 
 0800ee14 <HAL_DMA_GetError>:
   return hdma->ErrorCode;
@@ -7835,7 +7835,7 @@ static void FLASH_SetErrorCode(void)
 }
  800eef6:	4770      	bx	lr
  800eef8:	40023c00 	.word	0x40023c00
- 800eefc:	20001700 	.word	0x20001700
+ 800eefc:	2000174c 	.word	0x2000174c
 
 0800ef00 <HAL_FLASH_Unlock>:
   if(READ_BIT(FLASH->CR, FLASH_CR_LOCK) != RESET)
@@ -7925,7 +7925,7 @@ static void FLASH_SetErrorCode(void)
  800ef7e:	d9e5      	bls.n	800ef4c <FLASH_WaitForLastOperation+0x14>
  800ef80:	e7f7      	b.n	800ef72 <FLASH_WaitForLastOperation+0x3a>
  800ef82:	bf00      	nop
- 800ef84:	20001700 	.word	0x20001700
+ 800ef84:	2000174c 	.word	0x2000174c
  800ef88:	40023c00 	.word	0x40023c00
 
 0800ef8c <HAL_FLASH_Program>:
@@ -8010,7 +8010,7 @@ static void FLASH_SetErrorCode(void)
   __HAL_LOCK(&pFlash);
  800f00c:	2002      	movs	r0, #2
  800f00e:	e7e7      	b.n	800efe0 <HAL_FLASH_Program+0x54>
- 800f010:	20001700 	.word	0x20001700
+ 800f010:	2000174c 	.word	0x2000174c
  800f014:	40023c00 	.word	0x40023c00
 
 0800f018 <FLASH_MassErase.isra.0>:
@@ -8246,7 +8246,7 @@ void FLASH_FlushCaches(void)
   __HAL_LOCK(&pFlash);
  800f170:	2502      	movs	r5, #2
  800f172:	e7dd      	b.n	800f130 <HAL_FLASHEx_Erase+0x50>
- 800f174:	20001700 	.word	0x20001700
+ 800f174:	2000174c 	.word	0x2000174c
  800f178:	40023c00 	.word	0x40023c00
 
 0800f17c <HAL_GPIO_Init>:
@@ -10766,8 +10766,8 @@ __weak HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruc
  80101a8:	40023c00 	.word	0x40023c00
  80101ac:	40023800 	.word	0x40023800
  80101b0:	08017ded 	.word	0x08017ded
- 80101b4:	2000000c 	.word	0x2000000c
- 80101b8:	20000014 	.word	0x20000014
+ 80101b4:	20000058 	.word	0x20000058
+ 80101b8:	20000060 	.word	0x20000060
 
 080101bc <HAL_RCC_GetPCLK1Freq>:
   * @retval PCLK1 frequency
@@ -10788,7 +10788,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  80101ce:	4770      	bx	lr
  80101d0:	40023800 	.word	0x40023800
  80101d4:	08017dfd 	.word	0x08017dfd
- 80101d8:	2000000c 	.word	0x2000000c
+ 80101d8:	20000058 	.word	0x20000058
 
 080101dc <HAL_RCC_GetPCLK2Freq>:
   * @retval PCLK2 frequency
@@ -10809,7 +10809,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  80101ee:	4770      	bx	lr
  80101f0:	40023800 	.word	0x40023800
  80101f4:	08017dfd 	.word	0x08017dfd
- 80101f8:	2000000c 	.word	0x2000000c
+ 80101f8:	20000058 	.word	0x20000058
 
 080101fc <HAL_RCC_GetClockConfig>:
   * @retval None
@@ -11278,8 +11278,8 @@ HAL_StatusTypeDef HAL_RCC_DeInit(void)
  8010474:	04003010 	.word	0x04003010
  8010478:	20003000 	.word	0x20003000
  801047c:	00f42400 	.word	0x00f42400
- 8010480:	2000000c 	.word	0x2000000c
- 8010484:	20000014 	.word	0x20000014
+ 8010480:	20000058 	.word	0x20000058
+ 8010484:	20000060 	.word	0x20000060
 
 08010488 <HAL_RTC_WaitForSynchro>:
 HAL_StatusTypeDef HAL_RTC_WaitForSynchro(RTC_HandleTypeDef* hrtc)
@@ -15459,7 +15459,7 @@ static uint32_t SDMMC_GetCmdResp2(SDIO_TypeDef *SDIOx)
  8011d20:	f04f 4300 	mov.w	r3, #2147483648	; 0x80000000
  8011d24:	e7f1      	b.n	8011d0a <SDMMC_GetCmdResp2+0x2e>
  8011d26:	bf00      	nop
- 8011d28:	2000000c 	.word	0x2000000c
+ 8011d28:	20000058 	.word	0x20000058
 
 08011d2c <SDMMC_GetCmdResp3>:
 static uint32_t SDMMC_GetCmdResp3(SDIO_TypeDef *SDIOx)
@@ -15521,7 +15521,7 @@ static uint32_t SDMMC_GetCmdResp3(SDIO_TypeDef *SDIOx)
 }
  8011d68:	4770      	bx	lr
  8011d6a:	bf00      	nop
- 8011d6c:	2000000c 	.word	0x2000000c
+ 8011d6c:	20000058 	.word	0x20000058
 
 08011d70 <SDMMC_GetCmdResp1>:
   register uint32_t count = Timeout * (SystemCoreClock / 8U /1000U);
@@ -15695,7 +15695,7 @@ static uint32_t SDMMC_GetCmdResp3(SDIO_TypeDef *SDIOx)
  8011e7c:	f44f 0080 	mov.w	r0, #4194304	; 0x400000
  8011e80:	e78c      	b.n	8011d9c <SDMMC_GetCmdResp1+0x2c>
  8011e82:	bf00      	nop
- 8011e84:	2000000c 	.word	0x2000000c
+ 8011e84:	20000058 	.word	0x20000058
  8011e88:	fdffe008 	.word	0xfdffe008
 
 08011e8c <SDIO_Init>:
@@ -16118,7 +16118,7 @@ static uint32_t SDMMC_GetCmdResp3(SDIO_TypeDef *SDIOx)
   return errorstate;
  80120e4:	e7fa      	b.n	80120dc <SDMMC_CmdGoIdleState+0x40>
  80120e6:	bf00      	nop
- 80120e8:	2000000c 	.word	0x2000000c
+ 80120e8:	20000058 	.word	0x20000058
 
 080120ec <SDMMC_CmdOperCond>:
 {
@@ -16222,7 +16222,7 @@ static uint32_t SDMMC_GetCmdResp7(SDIO_TypeDef *SDIOx)
  8012160:	f04f 4000 	mov.w	r0, #2147483648	; 0x80000000
  8012164:	e7ec      	b.n	8012140 <SDMMC_CmdOperCond+0x54>
  8012166:	bf00      	nop
- 8012168:	2000000c 	.word	0x2000000c
+ 8012168:	20000058 	.word	0x20000058
 
 0801216c <SDMMC_CmdAppCommand>:
 {
@@ -16443,7 +16443,7 @@ static uint32_t SDMMC_GetCmdResp7(SDIO_TypeDef *SDIOx)
     return SDMMC_ERROR_ILLEGAL_CMD;
  80122ba:	f44f 5000 	mov.w	r0, #8192	; 0x2000
  80122be:	e7d9      	b.n	8012274 <SDMMC_CmdSetRelAdd+0x50>
- 80122c0:	2000000c 	.word	0x2000000c
+ 80122c0:	20000058 	.word	0x20000058
 
 080122c4 <SDMMC_CmdSendStatus>:
 {
@@ -17565,7 +17565,7 @@ HAL_StatusTypeDef USB_HC_Halt(USB_OTG_GlobalTypeDef *USBx, uint8_t hc_num)
  801295c:	69a0      	ldr	r0, [r4, #24]
  801295e:	f040 6080 	orr.w	r0, r0, #67108864	; 0x4000000
  8012962:	e7ea      	b.n	801293a <USB_HC_StartXfer+0x12a>
- 8012964:	20000230 	.word	0x20000230
+ 8012964:	2000027c 	.word	0x2000027c
 
 08012968 <USB_StopHost>:
   USBx->GAHBCFG &= ~USB_OTG_GAHBCFG_GINT;
@@ -17697,12 +17697,12 @@ void MX_FATFS_Init(void)
   /* USER CODE END Init */
 }
  80129ee:	bd08      	pop	{r3, pc}
- 80129f0:	20001725 	.word	0x20001725
+ 80129f0:	20001771 	.word	0x20001771
  80129f4:	080182a8 	.word	0x080182a8
- 80129f8:	20001720 	.word	0x20001720
- 80129fc:	20001721 	.word	0x20001721
+ 80129f8:	2000176c 	.word	0x2000176c
+ 80129fc:	2000176d 	.word	0x2000176d
  8012a00:	080182bc 	.word	0x080182bc
- 8012a04:	200057fc 	.word	0x200057fc
+ 8012a04:	20005848 	.word	0x20005848
 
 08012a08 <get_fattime>:
 DWORD get_fattime(void)
@@ -17732,8 +17732,8 @@ void MX_FATFS_DeInit(void)
 	BSP_SD_DeInit();
  8012a1e:	f000 b85b 	b.w	8012ad8 <BSP_SD_DeInit>
  8012a22:	bf00      	nop
- 8012a24:	20001725 	.word	0x20001725
- 8012a28:	20001721 	.word	0x20001721
+ 8012a24:	20001771 	.word	0x20001771
+ 8012a28:	2000176d 	.word	0x2000176d
 
 08012a2c <BSP_SD_ReadBlocks_DMA>:
   * @param  ReadAddr: Address from where data is to be read
@@ -17763,7 +17763,7 @@ __weak uint8_t BSP_SD_ReadBlocks_DMA(uint32_t *pData, uint32_t ReadAddr, uint32_
  8012a3e:	2001      	movne	r0, #1
  8012a40:	bd08      	pop	{r3, pc}
  8012a42:	bf00      	nop
- 8012a44:	20001570 	.word	0x20001570
+ 8012a44:	200015bc 	.word	0x200015bc
 
 08012a48 <BSP_SD_WriteBlocks_DMA>:
   * @param  WriteAddr: Address from where data is to be written
@@ -17793,7 +17793,7 @@ __weak uint8_t BSP_SD_WriteBlocks_DMA(uint32_t *pData, uint32_t WriteAddr, uint3
  8012a5a:	2001      	movne	r0, #1
  8012a5c:	bd08      	pop	{r3, pc}
  8012a5e:	bf00      	nop
- 8012a60:	20001570 	.word	0x20001570
+ 8012a60:	200015bc 	.word	0x200015bc
 
 08012a64 <BSP_SD_GetCardState>:
   *          This value can be one of the following values:
@@ -17811,7 +17811,7 @@ __weak uint8_t BSP_SD_GetCardState(void)
  8012a6e:	bf18      	it	ne
  8012a70:	2001      	movne	r0, #1
  8012a72:	bd08      	pop	{r3, pc}
- 8012a74:	20001570 	.word	0x20001570
+ 8012a74:	200015bc 	.word	0x200015bc
 
 08012a78 <BSP_SD_GetCardInfo>:
   * @retval None
@@ -17823,7 +17823,7 @@ __weak void BSP_SD_GetCardInfo(HAL_SD_CardInfoTypeDef *CardInfo)
  8012a78:	4601      	mov	r1, r0
  8012a7a:	4801      	ldr	r0, [pc, #4]	; (8012a80 <BSP_SD_GetCardInfo+0x8>)
  8012a7c:	f7fe b98d 	b.w	8010d9a <HAL_SD_GetCardInfo>
- 8012a80:	20001570 	.word	0x20001570
+ 8012a80:	200015bc 	.word	0x200015bc
 
 08012a84 <BSP_SD_AbortCallback>:
  8012a84:	4770      	bx	lr
@@ -17910,7 +17910,7 @@ __weak uint8_t BSP_SD_IsDetected(void)
 }
  8012ad0:	2001      	movs	r0, #1
  8012ad2:	bd08      	pop	{r3, pc}
- 8012ad4:	20001570 	.word	0x20001570
+ 8012ad4:	200015bc 	.word	0x200015bc
 
 08012ad8 <BSP_SD_DeInit>:
 
@@ -17982,7 +17982,7 @@ uint8_t BSP_SD_DeInit(void)
 }
  8012b24:	bd10      	pop	{r4, pc}
  8012b26:	bf00      	nop
- 8012b28:	20001570 	.word	0x20001570
+ 8012b28:	200015bc 	.word	0x200015bc
  8012b2c:	40023800 	.word	0x40023800
 
 08012b30 <BSP_PlatformIsDetected>:
@@ -18040,7 +18040,7 @@ static DSTATUS SD_CheckStatus(BYTE lun)
  8012b60:	7818      	ldrb	r0, [r3, #0]
 }
  8012b62:	bd10      	pop	{r4, pc}
- 8012b64:	20000018 	.word	0x20000018
+ 8012b64:	20000064 	.word	0x20000064
 
 08012b68 <SD_initialize>:
   * @brief  Initializes a Drive
@@ -18070,7 +18070,7 @@ DSTATUS SD_initialize(BYTE lun)
  8012b78:	7820      	ldrb	r0, [r4, #0]
 }
  8012b7a:	bd10      	pop	{r4, pc}
- 8012b7c:	20000018 	.word	0x20000018
+ 8012b7c:	20000064 	.word	0x20000064
 
 08012b80 <SD_status>:
   * @param  lun : not used
@@ -18149,7 +18149,7 @@ DRESULT SD_ioctl(BYTE lun, BYTE cmd, void *buff)
  8012bca:	2003      	movs	r0, #3
  8012bcc:	e7e8      	b.n	8012ba0 <SD_ioctl+0x1c>
  8012bce:	bf00      	nop
- 8012bd0:	20000018 	.word	0x20000018
+ 8012bd0:	20000064 	.word	0x20000064
 
 08012bd4 <SD_CheckStatusWithTimeout.constprop.4>:
 static int SD_CheckStatusWithTimeout(uint32_t timeout)
@@ -18241,7 +18241,7 @@ static int SD_CheckStatusWithTimeout(uint32_t timeout)
  8012c5e:	2800      	cmp	r0, #0
  8012c60:	d1f6      	bne.n	8012c50 <SD_write+0x54>
  8012c62:	e7d7      	b.n	8012c14 <SD_write+0x18>
- 8012c64:	20000238 	.word	0x20000238
+ 8012c64:	20000284 	.word	0x20000284
 
 08012c68 <SD_read>:
 {
@@ -18304,7 +18304,7 @@ static int SD_CheckStatusWithTimeout(uint32_t timeout)
  8012cca:	d1f6      	bne.n	8012cba <SD_read+0x52>
  8012ccc:	e7d5      	b.n	8012c7a <SD_read+0x12>
  8012cce:	bf00      	nop
- 8012cd0:	20000234 	.word	0x20000234
+ 8012cd0:	20000280 	.word	0x20000280
 
 08012cd4 <BSP_SD_WriteCpltCallback>:
   * @retval None
@@ -18318,7 +18318,7 @@ void BSP_SD_WriteCpltCallback(void)
  8012cd8:	601a      	str	r2, [r3, #0]
 }
  8012cda:	4770      	bx	lr
- 8012cdc:	20000238 	.word	0x20000238
+ 8012cdc:	20000284 	.word	0x20000284
 
 08012ce0 <BSP_SD_ReadCpltCallback>:
   * @param hsd: SD handle
@@ -18332,7 +18332,7 @@ void BSP_SD_ReadCpltCallback(void)
  8012ce4:	601a      	str	r2, [r3, #0]
 }
  8012ce6:	4770      	bx	lr
- 8012ce8:	20000234 	.word	0x20000234
+ 8012ce8:	20000280 	.word	0x20000280
 
 08012cec <USBH_initialize>:
 DSTATUS USBH_initialize(BYTE lun)
@@ -18367,7 +18367,7 @@ DSTATUS USBH_status(BYTE lun)
  8012cfe:	0940      	lsrs	r0, r0, #5
  8012d00:	bd08      	pop	{r3, pc}
  8012d02:	bf00      	nop
- 8012d04:	20005800 	.word	0x20005800
+ 8012d04:	2000584c 	.word	0x2000584c
 
 08012d08 <USBH_read>:
   * @param  sector: Sector address (LBA)
@@ -18475,8 +18475,8 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
       res = RES_NOTRDY;
  8012d94:	2003      	movs	r0, #3
  8012d96:	e7e9      	b.n	8012d6c <USBH_read+0x64>
- 8012d98:	20005800 	.word	0x20005800
- 8012d9c:	2000023c 	.word	0x2000023c
+ 8012d98:	2000584c 	.word	0x2000584c
+ 8012d9c:	20000288 	.word	0x20000288
 
 08012da0 <USBH_ioctl>:
   * @param  *buff: Buffer to send/receive control data
@@ -18548,7 +18548,7 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
     res = RES_OK;
  8012df8:	2000      	movs	r0, #0
  8012dfa:	e7db      	b.n	8012db4 <USBH_ioctl+0x14>
- 8012dfc:	20005800 	.word	0x20005800
+ 8012dfc:	2000584c 	.word	0x2000584c
 
 08012e00 <USBH_write>:
 {
@@ -18634,8 +18634,8 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
       res = RES_WRPRT;
  8012e94:	2002      	movs	r0, #2
  8012e96:	e7e8      	b.n	8012e6a <USBH_write+0x6a>
- 8012e98:	20005800 	.word	0x20005800
- 8012e9c:	2000023c 	.word	0x2000023c
+ 8012e98:	2000584c 	.word	0x2000584c
+ 8012e9c:	20000288 	.word	0x20000288
 
 08012ea0 <USBH_MSC_SOFProcess>:
 {
@@ -22502,7 +22502,7 @@ uint8_t USBH_AllocPipe(USBH_HandleTypeDef *phost, uint8_t ep_addr)
  801442e:	685b      	ldr	r3, [r3, #4]
  8014430:	685b      	ldr	r3, [r3, #4]
  8014432:	4718      	bx	r3
- 8014434:	20001468 	.word	0x20001468
+ 8014434:	200014b4 	.word	0x200014b4
 
 08014438 <disk_initialize>:
 	BYTE pdrv				/* Physical drive nmuber to identify the drive */
@@ -22530,7 +22530,7 @@ uint8_t USBH_AllocPipe(USBH_HandleTypeDef *phost, uint8_t ep_addr)
 }
  8014450:	2000      	movs	r0, #0
  8014452:	4770      	bx	lr
- 8014454:	20001468 	.word	0x20001468
+ 8014454:	200014b4 	.word	0x200014b4
 
 08014458 <disk_read>:
 	BYTE pdrv,		/* Physical drive nmuber to identify the drive */
@@ -22556,7 +22556,7 @@ uint8_t USBH_AllocPipe(USBH_HandleTypeDef *phost, uint8_t ep_addr)
   res = disk.drv[pdrv]->disk_read(disk.lun[pdrv], buff, sector, count);
  801446c:	4760      	bx	ip
  801446e:	bf00      	nop
- 8014470:	20001468 	.word	0x20001468
+ 8014470:	200014b4 	.word	0x200014b4
 
 08014474 <disk_write>:
 	BYTE pdrv,		/* Physical drive nmuber to identify the drive */
@@ -22582,7 +22582,7 @@ uint8_t USBH_AllocPipe(USBH_HandleTypeDef *phost, uint8_t ep_addr)
   res = disk.drv[pdrv]->disk_write(disk.lun[pdrv], buff, sector, count);
  8014488:	4760      	bx	ip
  801448a:	bf00      	nop
- 801448c:	20001468 	.word	0x20001468
+ 801448c:	200014b4 	.word	0x200014b4
 
 08014490 <disk_ioctl>:
 	void *buff		/* Buffer to send/receive control data */
@@ -22606,7 +22606,7 @@ uint8_t USBH_AllocPipe(USBH_HandleTypeDef *phost, uint8_t ep_addr)
  80144a2:	691b      	ldr	r3, [r3, #16]
  80144a4:	4718      	bx	r3
  80144a6:	bf00      	nop
- 80144a8:	20001468 	.word	0x20001468
+ 80144a8:	200014b4 	.word	0x200014b4
 
 080144ac <ld_dword>:
 DWORD ld_dword (const BYTE* ptr)	/* Load a 4-byte little-endian word */
@@ -22751,7 +22751,7 @@ void mem_set (void* dst, int val, UINT cnt) {
  8014542:	2301      	movs	r3, #1
  8014544:	e7f9      	b.n	801453a <chk_lock+0x62>
  8014546:	bf00      	nop
- 8014548:	20001244 	.word	0x20001244
+ 8014548:	20001290 	.word	0x20001290
 
 0801454c <inc_lock>:
 {
@@ -22849,7 +22849,7 @@ void mem_set (void* dst, int val, UINT cnt) {
 		if (i == _FS_LOCK) return 0;	/* No free entry to register (int err) */
  80145c4:	2000      	movs	r0, #0
  80145c6:	e7f0      	b.n	80145aa <inc_lock+0x5e>
- 80145c8:	20001244 	.word	0x20001244
+ 80145c8:	20001290 	.word	0x20001290
 
 080145cc <dec_lock>:
 {
@@ -22897,7 +22897,7 @@ void mem_set (void* dst, int val, UINT cnt) {
 	return res;
 }
  80145fe:	4770      	bx	lr
- 8014600:	20001244 	.word	0x20001244
+ 8014600:	20001290 	.word	0x20001290
 
 08014604 <clust2sect>:
 	FATFS* fs,		/* File system object */
@@ -23679,12 +23679,12 @@ FRESULT sync_window (	/* Returns FR_OK or FR_DISK_ERROR */
 		return FR_NOT_READY;			/* Failed to initialize due to no medium or hard error */
  8014aec:	2003      	movs	r0, #3
  8014aee:	e6b7      	b.n	8014860 <find_volume+0x44>
- 8014af0:	2000123c 	.word	0x2000123c
+ 8014af0:	20001288 	.word	0x20001288
  8014af4:	41615252 	.word	0x41615252
  8014af8:	61417272 	.word	0x61417272
- 8014afc:	20001264 	.word	0x20001264
- 8014b00:	20001266 	.word	0x20001266
- 8014b04:	20001244 	.word	0x20001244
+ 8014afc:	200012b0 	.word	0x200012b0
+ 8014b00:	200012b2 	.word	0x200012b2
+ 8014b04:	20001290 	.word	0x20001290
 
 08014b08 <put_fat>:
 	if (clst >= 2 && clst < fs->n_fatent) {	/* Check if in valid range */
@@ -25383,8 +25383,8 @@ FRESULT f_mount (
  80156de:	2000      	movs	r0, #0
  80156e0:	e7f9      	b.n	80156d6 <f_mount+0x52>
  80156e2:	bf00      	nop
- 80156e4:	2000123c 	.word	0x2000123c
- 80156e8:	20001244 	.word	0x20001244
+ 80156e4:	20001288 	.word	0x20001288
+ 80156e8:	20001290 	.word	0x20001290
 
 080156ec <f_open>:
 FRESULT f_open (
@@ -25746,7 +25746,7 @@ FRESULT f_open (
  8015906:	2001      	movs	r0, #1
  8015908:	e769      	b.n	80157de <f_open+0xf2>
  801590a:	bf00      	nop
- 801590c:	20001244 	.word	0x20001244
+ 801590c:	20001290 	.word	0x20001290
 
 08015910 <f_read>:
 	FIL* fp, 	/* Pointer to the file object */
@@ -26636,7 +26636,7 @@ uint8_t FATFS_LinkDriverEx(const Diskio_drvTypeDef *drv, char *path, uint8_t lun
   uint8_t ret = 1;
  8015e14:	2001      	movs	r0, #1
  8015e16:	e7fc      	b.n	8015e12 <FATFS_LinkDriverEx+0x3a>
- 8015e18:	20001468 	.word	0x20001468
+ 8015e18:	200014b4 	.word	0x200014b4
 
 08015e1c <FATFS_LinkDriver>:
   * @param  path: pointer to the logical drive path
@@ -26695,7 +26695,7 @@ uint8_t FATFS_UnLinkDriverEx(char *path, uint8_t lun)
 }
  8015e4c:	4770      	bx	lr
  8015e4e:	bf00      	nop
- 8015e50:	20001468 	.word	0x20001468
+ 8015e50:	200014b4 	.word	0x200014b4
 
 08015e54 <FATFS_UnLinkDriver>:
   * @param  path: pointer to the logical drive path
@@ -26893,7 +26893,7 @@ static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
  8015f36:	4b01      	ldr	r3, [pc, #4]	; (8015f3c <USBH_UserProcess+0x20>)
  8015f38:	2201      	movs	r2, #1
  8015f3a:	e7fa      	b.n	8015f32 <USBH_UserProcess+0x16>
- 8015f3c:	20001478 	.word	0x20001478
+ 8015f3c:	200014c4 	.word	0x200014c4
 
 08015f40 <MX_USB_HOST_DeInit>:
 {
@@ -26908,7 +26908,7 @@ static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
  8015f4c:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
 	USBH_DeInit(&hUsbHostHS);
  8015f50:	f7fd bd55 	b.w	80139fe <USBH_DeInit>
- 8015f54:	20005800 	.word	0x20005800
+ 8015f54:	2000584c 	.word	0x2000584c
 
 08015f58 <MX_USB_HOST_Init>:
 {
@@ -26940,15 +26940,15 @@ static void USBH_UserProcess  (USBH_HandleTypeDef *phost, uint8_t id)
  8015f88:	bd08      	pop	{r3, pc}
  8015f8a:	bf00      	nop
  8015f8c:	08015f1d 	.word	0x08015f1d
- 8015f90:	20005800 	.word	0x20005800
- 8015f94:	2000001c 	.word	0x2000001c
+ 8015f90:	2000584c 	.word	0x2000584c
+ 8015f94:	20000068 	.word	0x20000068
 
 08015f98 <MX_USB_HOST_Process>:
   USBH_Process(&hUsbHostHS);
  8015f98:	4801      	ldr	r0, [pc, #4]	; (8015fa0 <MX_USB_HOST_Process+0x8>)
  8015f9a:	f7fd bd95 	b.w	8013ac8 <USBH_Process>
  8015f9e:	bf00      	nop
- 8015fa0:	20005800 	.word	0x20005800
+ 8015fa0:	2000584c 	.word	0x2000584c
 
 08015fa4 <HAL_HCD_MspInit>:
                        LL Driver Callbacks (HCD -> USB Host Library)
@@ -27164,7 +27164,7 @@ USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
 }
  8016098:	2000      	movs	r0, #0
  801609a:	bd10      	pop	{r4, pc}
- 801609c:	20005bd8 	.word	0x20005bd8
+ 801609c:	20005c24 	.word	0x20005c24
  80160a0:	40040000 	.word	0x40040000
 
 080160a4 <USBH_LL_Start>:
@@ -27519,7 +27519,7 @@ void USBH_Delay(uint32_t Delay)
  801621a:	6818      	ldr	r0, [r3, #0]
  801621c:	4770      	bx	lr
  801621e:	bf00      	nop
- 8016220:	2000003c 	.word	0x2000003c
+ 8016220:	20000088 	.word	0x20000088
 
 08016224 <__libc_init_array>:
  8016224:	b570      	push	{r4, r5, r6, lr}
@@ -27558,7 +27558,7 @@ void USBH_Delay(uint32_t Delay)
  8016270:	6818      	ldr	r0, [r3, #0]
  8016272:	f000 b86d 	b.w	8016350 <_malloc_r>
  8016276:	bf00      	nop
- 8016278:	2000003c 	.word	0x2000003c
+ 8016278:	20000088 	.word	0x20000088
 
 0801627c <free>:
  801627c:	4b02      	ldr	r3, [pc, #8]	; (8016288 <free+0xc>)
@@ -27566,7 +27566,7 @@ void USBH_Delay(uint32_t Delay)
  8016280:	6818      	ldr	r0, [r3, #0]
  8016282:	f000 b817 	b.w	80162b4 <_free_r>
  8016286:	bf00      	nop
- 8016288:	2000003c 	.word	0x2000003c
+ 8016288:	20000088 	.word	0x20000088
 
 0801628c <memcpy>:
  801628c:	b510      	push	{r4, lr}
@@ -27662,7 +27662,7 @@ void USBH_Delay(uint32_t Delay)
  8016346:	e7c7      	b.n	80162d8 <_free_r+0x24>
  8016348:	bd38      	pop	{r3, r4, r5, pc}
  801634a:	bf00      	nop
- 801634c:	2000147c 	.word	0x2000147c
+ 801634c:	200014c8 	.word	0x200014c8
 
 08016350 <_malloc_r>:
  8016350:	b570      	push	{r4, r5, r6, lr}
@@ -27741,8 +27741,8 @@ void USBH_Delay(uint32_t Delay)
  80163f6:	d0cf      	beq.n	8016398 <_malloc_r+0x48>
  80163f8:	6025      	str	r5, [r4, #0]
  80163fa:	e7db      	b.n	80163b4 <_malloc_r+0x64>
- 80163fc:	2000147c 	.word	0x2000147c
- 8016400:	20001480 	.word	0x20001480
+ 80163fc:	200014c8 	.word	0x200014c8
+ 8016400:	200014cc 	.word	0x200014cc
 
 08016404 <iprintf>:
  8016404:	b40f      	push	{r0, r1, r2, r3}
@@ -27764,7 +27764,7 @@ void USBH_Delay(uint32_t Delay)
  8016428:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
  801642c:	b004      	add	sp, #16
  801642e:	4770      	bx	lr
- 8016430:	2000003c 	.word	0x2000003c
+ 8016430:	20000088 	.word	0x20000088
 
 08016434 <_sbrk_r>:
  8016434:	b538      	push	{r3, r4, r5, lr}
@@ -27780,7 +27780,7 @@ void USBH_Delay(uint32_t Delay)
  801644a:	b103      	cbz	r3, 801644e <_sbrk_r+0x1a>
  801644c:	602b      	str	r3, [r5, #0]
  801644e:	bd38      	pop	{r3, r4, r5, pc}
- 8016450:	20005e9c 	.word	0x20005e9c
+ 8016450:	20005ee8 	.word	0x20005ee8
 
 08016454 <setvbuf>:
  8016454:	e92d 43f7 	stmdb	sp!, {r0, r1, r2, r4, r5, r6, r7, r8, r9, lr}
@@ -27919,7 +27919,7 @@ void USBH_Delay(uint32_t Delay)
  8016598:	f04f 30ff 	mov.w	r0, #4294967295
  801659c:	e7bb      	b.n	8016516 <setvbuf+0xc2>
  801659e:	bf00      	nop
- 80165a0:	2000003c 	.word	0x2000003c
+ 80165a0:	20000088 	.word	0x20000088
  80165a4:	0801874c 	.word	0x0801874c
  80165a8:	0801876c 	.word	0x0801876c
  80165ac:	0801872c 	.word	0x0801872c
@@ -27949,7 +27949,7 @@ void USBH_Delay(uint32_t Delay)
  80165e0:	f85d eb04 	ldr.w	lr, [sp], #4
  80165e4:	b003      	add	sp, #12
  80165e6:	4770      	bx	lr
- 80165e8:	2000003c 	.word	0x2000003c
+ 80165e8:	20000088 	.word	0x20000088
  80165ec:	ffff0208 	.word	0xffff0208
 
 080165f0 <strcpy>:
@@ -28083,8 +28083,8 @@ void USBH_Delay(uint32_t Delay)
  8016716:	b003      	add	sp, #12
  8016718:	bd30      	pop	{r4, r5, pc}
  801671a:	bf00      	nop
- 801671c:	2000003c 	.word	0x2000003c
- 8016720:	200000a0 	.word	0x200000a0
+ 801671c:	20000088 	.word	0x20000088
+ 8016720:	200000ec 	.word	0x200000ec
 
 08016724 <__sflush_r>:
  8016724:	898a      	ldrh	r2, [r1, #12]
@@ -29592,7 +29592,7 @@ void USBH_Delay(uint32_t Delay)
  80174a6:	b103      	cbz	r3, 80174aa <_write_r+0x1e>
  80174a8:	602b      	str	r3, [r5, #0]
  80174aa:	bd38      	pop	{r3, r4, r5, pc}
- 80174ac:	20005e9c 	.word	0x20005e9c
+ 80174ac:	20005ee8 	.word	0x20005ee8
 
 080174b0 <__swsetup_r>:
  80174b0:	4b32      	ldr	r3, [pc, #200]	; (801757c <__swsetup_r+0xcc>)
@@ -29683,7 +29683,7 @@ void USBH_Delay(uint32_t Delay)
  8017576:	2000      	movs	r0, #0
  8017578:	e7f7      	b.n	801756a <__swsetup_r+0xba>
  801757a:	bf00      	nop
- 801757c:	2000003c 	.word	0x2000003c
+ 801757c:	20000088 	.word	0x20000088
  8017580:	0801874c 	.word	0x0801874c
  8017584:	0801876c 	.word	0x0801876c
  8017588:	0801872c 	.word	0x0801872c
@@ -29702,7 +29702,7 @@ void USBH_Delay(uint32_t Delay)
  80175a2:	b103      	cbz	r3, 80175a6 <_close_r+0x1a>
  80175a4:	602b      	str	r3, [r5, #0]
  80175a6:	bd38      	pop	{r3, r4, r5, pc}
- 80175a8:	20005e9c 	.word	0x20005e9c
+ 80175a8:	20005ee8 	.word	0x20005ee8
 
 080175ac <_fstat_r>:
  80175ac:	b538      	push	{r3, r4, r5, lr}
@@ -29720,7 +29720,7 @@ void USBH_Delay(uint32_t Delay)
  80175c6:	602b      	str	r3, [r5, #0]
  80175c8:	bd38      	pop	{r3, r4, r5, pc}
  80175ca:	bf00      	nop
- 80175cc:	20005e9c 	.word	0x20005e9c
+ 80175cc:	20005ee8 	.word	0x20005ee8
 
 080175d0 <_isatty_r>:
  80175d0:	b538      	push	{r3, r4, r5, lr}
@@ -29736,7 +29736,7 @@ void USBH_Delay(uint32_t Delay)
  80175e6:	b103      	cbz	r3, 80175ea <_isatty_r+0x1a>
  80175e8:	602b      	str	r3, [r5, #0]
  80175ea:	bd38      	pop	{r3, r4, r5, pc}
- 80175ec:	20005e9c 	.word	0x20005e9c
+ 80175ec:	20005ee8 	.word	0x20005ee8
 
 080175f0 <_lseek_r>:
  80175f0:	b538      	push	{r3, r4, r5, lr}
@@ -29754,7 +29754,7 @@ void USBH_Delay(uint32_t Delay)
  801760a:	b103      	cbz	r3, 801760e <_lseek_r+0x1e>
  801760c:	602b      	str	r3, [r5, #0]
  801760e:	bd38      	pop	{r3, r4, r5, pc}
- 8017610:	20005e9c 	.word	0x20005e9c
+ 8017610:	20005ee8 	.word	0x20005ee8
 
 08017614 <memmove>:
  8017614:	4288      	cmp	r0, r1
@@ -29828,7 +29828,7 @@ void USBH_Delay(uint32_t Delay)
  80176ae:	b103      	cbz	r3, 80176b2 <_read_r+0x1e>
  80176b0:	602b      	str	r3, [r5, #0]
  80176b2:	bd38      	pop	{r3, r4, r5, pc}
- 80176b4:	20005e9c 	.word	0x20005e9c
+ 80176b4:	20005ee8 	.word	0x20005ee8
 
 080176b8 <_malloc_usable_size_r>:
  80176b8:	f851 3c04 	ldr.w	r3, [r1, #-4]

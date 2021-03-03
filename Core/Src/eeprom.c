@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2016 STMicroelectronics International N.V. 
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V. 
   * All rights reserved.</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without 
@@ -41,14 +41,14 @@
   * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
   ******************************************************************************
-  */ 
-
+  */
 /** @addtogroup EEPROM_Emulation
   * @{
   */ 
 
 /* Includes ------------------------------------------------------------------*/
 #include "eeprom.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -111,7 +111,6 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
         }
       }
       else if (PageStatus1 == RECEIVE_DATA) /* Page0 erased, Page1 receive */
@@ -125,7 +124,6 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
         }
         /* Mark Page1 as valid */
         FlashStatus = HAL_FLASH_Program(TYPEPROGRAM_HALFWORD, PAGE1_BASE_ADDRESS, VALID_PAGE);
@@ -193,7 +191,6 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
         }
       }
       else if (PageStatus1 == ERASED) /* Page0 receive, Page1 erased */
@@ -210,7 +207,6 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
         }
         /* Mark Page0 as valid */
         FlashStatus = HAL_FLASH_Program(TYPEPROGRAM_HALFWORD, PAGE0_BASE_ADDRESS, VALID_PAGE);
@@ -257,7 +253,6 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
         }
       }
       else /* Page0 valid, Page1 receive */
@@ -305,7 +300,6 @@ uint16_t EE_Init(void)
           {
             return FlashStatus;
           }
-          //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
         }
       }
       break;
@@ -434,7 +428,7 @@ uint16_t EE_ReadVariable(uint16_t VirtAddress, uint16_t* Data)
 uint16_t EE_WriteVariable(uint16_t VirtAddress, uint16_t Data)
 {
   uint16_t Status = 0;
-  
+
   /* Write the variable virtual address and value in the EEPROM */
   Status = EE_VerifyPageFullWriteVariable(VirtAddress, Data);
 
@@ -474,7 +468,6 @@ static HAL_StatusTypeDef EE_Format(void)
     {
       return FlashStatus;
     }
-    //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE0_BASE_ADDRESS,PAGE_SIZE);
   }
   /* Set Page0 as valid page: Write VALID_PAGE at Page0 base address */
   FlashStatus = HAL_FLASH_Program(TYPEPROGRAM_HALFWORD, PAGE0_BASE_ADDRESS, VALID_PAGE); 
@@ -494,7 +487,6 @@ static HAL_StatusTypeDef EE_Format(void)
     {
       return FlashStatus;
     }
-    //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)PAGE1_BASE_ADDRESS,PAGE_SIZE);
   }
   
   return HAL_OK;
@@ -646,7 +638,6 @@ static uint16_t EE_PageTransfer(uint16_t VirtAddress, uint16_t Data)
 {
   HAL_StatusTypeDef FlashStatus = HAL_OK;
   uint32_t NewPageAddress = EEPROM_START_ADDRESS;
-  uint32_t OldPageAddress = 0;
   uint16_t OldPageId=0;
   uint16_t ValidPage = PAGE0, VarIdx = 0;
   uint16_t EepromStatus = 0, ReadStatus = 0;
@@ -661,9 +652,6 @@ static uint16_t EE_PageTransfer(uint16_t VirtAddress, uint16_t Data)
     /* New page address where variable will be moved to */
     NewPageAddress = PAGE0_BASE_ADDRESS;
 
-    /* Old page address  where variable will be moved from */
-    OldPageAddress = PAGE1_BASE_ADDRESS;
-
     /* Old page ID where variable will be taken from */
     OldPageId = PAGE1_ID;
   }
@@ -671,9 +659,6 @@ static uint16_t EE_PageTransfer(uint16_t VirtAddress, uint16_t Data)
   {
     /* New page address  where variable will be moved to */
     NewPageAddress = PAGE1_BASE_ADDRESS;
-
-    /* Old page address  where variable will be moved from */
-    OldPageAddress = PAGE0_BASE_ADDRESS;
 
     /* Old page ID where variable will be taken from */
     OldPageId = PAGE0_ID;
@@ -732,7 +717,6 @@ static uint16_t EE_PageTransfer(uint16_t VirtAddress, uint16_t Data)
   {
     return FlashStatus;
   }
-  //SCB_CleanInvalidateDCache_by_Addr((uint32_t*)OldPageAddress,PAGE_SIZE);
 
   /* Set new Page status to VALID_PAGE status */
   FlashStatus = HAL_FLASH_Program(TYPEPROGRAM_HALFWORD, NewPageAddress, VALID_PAGE);   

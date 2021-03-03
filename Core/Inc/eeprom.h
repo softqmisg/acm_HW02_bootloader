@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2016 STMicroelectronics International N.V. 
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V. 
   * All rights reserved.</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without 
@@ -50,8 +50,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
-#include "main.h"
-    
+
 /* Exported constants --------------------------------------------------------*/
 /* EEPROM emulation firmware error codes */
 #define EE_OK      (uint32_t)HAL_OK
@@ -66,15 +65,18 @@
    be done by word  */
 #define VOLTAGE_RANGE           (uint8_t)VOLTAGE_RANGE_3
 
-/* EEPROM emulation start address in Flash */
- #define EEPROM_START_ADDRESS  ((uint32_t)0x08004000) /* From sector2 */
+/* EEPROM start address in Flash */
+#define EEPROM_START_ADDRESS  ((uint32_t)0x08004000) /* EEPROM emulation start address:
+                                                  from sector2 : after 16KByte of used 
+                                                  Flash memory */
+
 /* Pages 0 and 1 base and end addresses */
 #define PAGE0_BASE_ADDRESS    ((uint32_t)(EEPROM_START_ADDRESS + 0x0000))
 #define PAGE0_END_ADDRESS     ((uint32_t)(EEPROM_START_ADDRESS + (PAGE_SIZE - 1)))
 #define PAGE0_ID               FLASH_SECTOR_1
 
-#define PAGE1_BASE_ADDRESS    ((uint32_t)(EEPROM_START_ADDRESS + PAGE_SIZE))
-#define PAGE1_END_ADDRESS     ((uint32_t)(EEPROM_START_ADDRESS + (PAGE_SIZE+ PAGE_SIZE - 1)))
+#define PAGE1_BASE_ADDRESS    ((uint32_t)(EEPROM_START_ADDRESS + 0x4000))
+#define PAGE1_END_ADDRESS     ((uint32_t)(EEPROM_START_ADDRESS + (2 * PAGE_SIZE - 1)))
 #define PAGE1_ID               FLASH_SECTOR_2
 
 /* Used Flash pages for EEPROM emulation */
@@ -97,7 +99,7 @@
 #define PAGE_FULL             ((uint8_t)0x80)
 
 /* Variables' number */
-#define NB_OF_VAR             ((uint8_t)0x03)
+#define NB_OF_VAR             ((uint8_t)41)
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
