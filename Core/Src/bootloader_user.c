@@ -16,22 +16,46 @@
 #include "graphics.h"
 #include "st7565.h"
 #include "libbmp.h"
-
+#include "rtc.h"
+#include "sdio.h"
 extern uint32_t __attribute__((section(".newsection"))) sharedmem;
 extern USBH_HandleTypeDef hUsbHostHS;
 /**************************************************************/
 void Peripherials_DeInit(void) {
+
+//	MX_FATFS_DeInit();
+//	HAL_UART_DeInit(&huart2);
+//	HAL_UART_MspDeInit(&huart2);
+//	HAL_UART_DeInit(&huart3);
+//	HAL_UART_MspDeInit(&huart3);
 //	BSP_SD_DeInit();
-//	FATFS_DeInit();
+//	MX_USB_HOST_DeInit();
+//	MX_GPIO_DeInit();
 	MX_FATFS_DeInit();
+
 	HAL_UART_DeInit(&huart2);
 	HAL_UART_MspDeInit(&huart2);
+
 	HAL_UART_DeInit(&huart3);
 	HAL_UART_MspDeInit(&huart3);
-	BSP_SD_DeInit();
+
+	HAL_RTC_DeInit(&hrtc);
+	HAL_RTC_MspDeInit(&hrtc);
+
+	HAL_SD_DeInit(&hsd);
+	HAL_SD_MspDeInit(&hsd);
+
+	f_mount(NULL, "0:", 1);
+	f_mount(NULL, "1:", 1);
+
+
 	MX_USB_HOST_DeInit();
-	MX_GPIO_DeInit();
-	//MX_IWDG_DeInit();
+
+	 __HAL_RCC_DMA2_CLK_DISABLE();
+
+	 MX_GPIO_DeInit();
+
+	 __HAL_IWDG_RELOAD_COUNTER(&hiwdg);
 
 }
 /*** Bootloader ***************************************************************/
@@ -101,12 +125,17 @@ uint8_t Check_USBMEM(char *firmware_path, uint16_t *firmware_version,
 	FRESULT fr;
 	char readline[200];
 	uint16_t usb_counter = 0;
+	USBH_ReEnumerate(&hUsbHostHS);
+	HAL_Delay(2000);
 	do {
+		#if __WATCHDOG_ENABLE__
+		HAL_IWDG_Refresh(&hiwdg);
+		#endif
 		MX_USB_HOST_Process();
-		HAL_Delay(10);
+		HAL_Delay(20);
 		usb_counter++;
 	} while ((usb_counter < 1000) && (!USBH_MSC_IsReady(&hUsbHostHS)));
-	if (usb_counter >= 1000) {
+	if (!USBH_MSC_IsReady(&hUsbHostHS)) {
 		printf("USB is not present.\n\r");
 		return MEM_NOT_PRESENT;
 	}
@@ -332,8 +361,11 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
 		f_close(&SDFile);
 	else
 		f_close(&USBHFile);
-	printf("Programming finished.\n\r");
-	printf("Flashed: %lu bytes.", (cntr * 4));
+	if(fr==FR_OK)
+		printf("Programming finished.\n\r");
+	else
+		printf("Programming error(%d)\n\r",fr);
+	printf("Flashed: %lu bytes.\n\r", (cntr * 4));
 	/* Open file for verification */
 	if (ID_mem == SD_ID)
 		fr = f_open(&SDFile, filename, FA_READ);

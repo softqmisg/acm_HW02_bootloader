@@ -95,6 +95,9 @@ int main(void) {
   uint16_t r;
 	RetargetInit(&huart3);
 	////////////////////////////////////////////////////////////////////////////
+	printf("\033[0;32;49m\n\r**********************************************************\n\r\033[0;39;49m");
+	printf(    "\033[0;32;49m*                  ACAM BOOTLOADER                        \n\r\033[0;39;49m");
+	printf(    "\033[0;32;49m************************************************************\n\r\033[0;39;49m");
 	printf("starting bootloader,shared mem= %lu.\n\r", sharedmem);
 	HAL_FLASH_Unlock();
 	if ((r=EE_Init()) != EE_OK) {
