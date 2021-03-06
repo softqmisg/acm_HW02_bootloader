@@ -39,8 +39,8 @@ void Peripherials_DeInit(void) {
 	HAL_UART_DeInit(&huart3);
 	HAL_UART_MspDeInit(&huart3);
 
-	HAL_RTC_DeInit(&hrtc);
-	HAL_RTC_MspDeInit(&hrtc);
+//	HAL_RTC_DeInit(&hrtc);
+//	HAL_RTC_MspDeInit(&hrtc);
 
 	HAL_SD_DeInit(&hsd);
 	HAL_SD_MspDeInit(&hsd);
