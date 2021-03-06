@@ -37,8 +37,6 @@
         * Output
         * EVENT_OUT
         * EXTI
-     PH8   ------> I2C3_SDA
-     PH7   ------> I2C3_SCL
 */
 void MX_GPIO_Init(void)
 {
@@ -113,14 +111,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(ESP32_EN_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PH8 PH7 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_7;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.Alternate = GPIO_AF4_I2C3;
-  HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PFPin PFPin */
   GPIO_InitStruct.Pin = TEC_ONOFF_Pin|TEC_CURDIR_Pin;
