@@ -7,33 +7,33 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         0000b7b0  0800c000  0800c000  0001c000  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00001300  080177b0  080177b0  000277b0  2**2
+  2 .rodata       00001300  08000188  08000188  00010188  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08018ab0  08018ab0  00030258  2**0
+  3 .ARM.extab    00000000  080177b0  080177b0  00030258  2**0
                   CONTENTS
-  4 .ARM          00000008  08018ab0  08018ab0  00028ab0  2**2
+  4 .ARM          00000008  080177b0  080177b0  000277b0  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08018ab8  08018ab8  00030258  2**0
+  5 .preinit_array 00000000  080177b8  080177b8  00030258  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08018ab8  08018ab8  00028ab8  2**2
+  6 .init_array   00000004  080177b8  080177b8  000277b8  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  08018abc  08018abc  00028abc  2**2
+  7 .fini_array   00000004  080177bc  080177bc  000277bc  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         00000258  20000000  08018ac0  00030000  2**2
+  8 .data         00000258  20000000  080177c0  00030000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00005ca0  20000258  08018d18  00030258  2**2
+  9 .bss          00005ca0  20000258  08017a18  00030258  2**2
                   ALLOC
- 10 ._user_heap_stack 00001800  20005ef8  08018d18  00035ef8  2**0
+ 10 ._user_heap_stack 00001800  20005ef8  08017a18  00035ef8  2**0
                   ALLOC
  11 .newsection   00000004  10000000  10000000  00040000  2**2
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  00030258  2**0
                   CONTENTS, READONLY
- 13 .debug_info   00047e17  00000000  00000000  00030288  2**0
+ 13 .debug_info   00047e1c  00000000  00000000  00030288  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_abbrev 00009884  00000000  00000000  0007809f  2**0
+ 14 .debug_abbrev 00009884  00000000  00000000  000780a4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_loc    0001a01f  00000000  00000000  00081923  2**0
+ 15 .debug_loc    0001a01f  00000000  00000000  00081928  2**0
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_aranges 00001ce0  00000000  00000000  0009b948  2**3
                   CONTENTS, READONLY, DEBUGGING
@@ -791,8 +791,8 @@ void Peripherials_DeInit(void) {
  800c58c:	20001714 	.word	0x20001714
  800c590:	200016d4 	.word	0x200016d4
  800c594:	200015c8 	.word	0x200015c8
- 800c598:	080178a9 	.word	0x080178a9
- 800c59c:	080178ac 	.word	0x080178ac
+ 800c598:	08000281 	.word	0x08000281
+ 800c59c:	08000284 	.word	0x08000284
  800c5a0:	40023800 	.word	0x40023800
  800c5a4:	200014d8 	.word	0x200014d8
 
@@ -888,16 +888,16 @@ uint8_t Check_SDCard(char *firmware_path, uint16_t *firmware_version,
  800c630:	f009 fc14 	bl	8015e5c <f_gets>
  800c634:	e7fe      	b.n	800c634 <Check_SDCard+0x8c>
  800c636:	bf00      	nop
- 800c638:	080177b0 	.word	0x080177b0
- 800c63c:	080177ca 	.word	0x080177ca
+ 800c638:	08000188 	.word	0x08000188
+ 800c63c:	080001a2 	.word	0x080001a2
  800c640:	2000177d 	.word	0x2000177d
  800c644:	2000481c 	.word	0x2000481c
- 800c648:	080177df 	.word	0x080177df
- 800c64c:	080177fc 	.word	0x080177fc
- 800c650:	08017813 	.word	0x08017813
- 800c654:	08017825 	.word	0x08017825
+ 800c648:	080001b7 	.word	0x080001b7
+ 800c64c:	080001d4 	.word	0x080001d4
+ 800c650:	080001eb 	.word	0x080001eb
+ 800c654:	080001fd 	.word	0x080001fd
  800c658:	200027b4 	.word	0x200027b4
- 800c65c:	08017831 	.word	0x08017831
+ 800c65c:	08000209 	.word	0x08000209
 
 0800c660 <Check_USBMEM>:
 /*** USB Memory ******************************************************************/
@@ -1072,16 +1072,16 @@ uint8_t Check_USBMEM(char *firmware_path, uint16_t *firmware_version,
  800c784:	4620      	mov	r0, r4
  800c786:	e790      	b.n	800c6aa <Check_USBMEM+0x4a>
  800c788:	20005858 	.word	0x20005858
- 800c78c:	0801784a 	.word	0x0801784a
- 800c790:	08017860 	.word	0x08017860
+ 800c78c:	08000222 	.word	0x08000222
+ 800c790:	08000238 	.word	0x08000238
  800c794:	20001779 	.word	0x20001779
  800c798:	200037e4 	.word	0x200037e4
- 800c79c:	08017871 	.word	0x08017871
- 800c7a0:	080177fc 	.word	0x080177fc
- 800c7a4:	0801788a 	.word	0x0801788a
- 800c7a8:	0801789d 	.word	0x0801789d
+ 800c79c:	08000249 	.word	0x08000249
+ 800c7a0:	080001d4 	.word	0x080001d4
+ 800c7a4:	08000262 	.word	0x08000262
+ 800c7a8:	08000275 	.word	0x08000275
  800c7ac:	20001784 	.word	0x20001784
- 800c7b0:	08017831 	.word	0x08017831
+ 800c7b0:	08000209 	.word	0x08000209
 
 0800c7b4 <goto_application>:
 /*** Go application******************************************************************/
@@ -1112,7 +1112,7 @@ uint8_t goto_application(void) {
  800c7ce:	2000      	movs	r0, #0
  800c7d0:	e7fc      	b.n	800c7cc <goto_application+0x18>
  800c7d2:	bf00      	nop
- 800c7d4:	08017bf7 	.word	0x08017bf7
+ 800c7d4:	080005cf 	.word	0x080005cf
 
 0800c7d8 <Write_Flash>:
 /*
@@ -1332,31 +1332,31 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
 		return FLASH_ERASE_FAIL;
  800c908:	2005      	movs	r0, #5
  800c90a:	e7a6      	b.n	800c85a <Write_Flash+0x82>
- 800c90c:	080178af 	.word	0x080178af
- 800c910:	080178b5 	.word	0x080178b5
+ 800c90c:	08000287 	.word	0x08000287
+ 800c910:	0800028d 	.word	0x0800028d
  800c914:	20000004 	.word	0x20000004
- 800c918:	080178bb 	.word	0x080178bb
- 800c91c:	080178cd 	.word	0x080178cd
+ 800c918:	08000293 	.word	0x08000293
+ 800c91c:	080002a5 	.word	0x080002a5
  800c920:	2000177d 	.word	0x2000177d
  800c924:	2000481c 	.word	0x2000481c
- 800c928:	08017963 	.word	0x08017963
- 800c92c:	080177fc 	.word	0x080177fc
+ 800c928:	0800033b 	.word	0x0800033b
+ 800c92c:	080001d4 	.word	0x080001d4
  800c930:	10000000 	.word	0x10000000
- 800c934:	08017913 	.word	0x08017913
- 800c938:	08017939 	.word	0x08017939
- 800c93c:	0801794f 	.word	0x0801794f
+ 800c934:	080002eb 	.word	0x080002eb
+ 800c938:	08000311 	.word	0x08000311
+ 800c93c:	08000327 	.word	0x08000327
  800c940:	20001779 	.word	0x20001779
  800c944:	200037e4 	.word	0x200037e4
  800c948:	20001784 	.word	0x20001784
- 800c94c:	0801799e 	.word	0x0801799e
+ 800c94c:	08000376 	.word	0x08000376
  800c950:	200027b4 	.word	0x200027b4
- 800c954:	08017831 	.word	0x08017831
- 800c958:	0801797c 	.word	0x0801797c
- 800c95c:	080179c2 	.word	0x080179c2
- 800c960:	080179e8 	.word	0x080179e8
- 800c964:	080179fb 	.word	0x080179fb
- 800c968:	08017fed 	.word	0x08017fed
- 800c96c:	08017a0a 	.word	0x08017a0a
+ 800c954:	08000209 	.word	0x08000209
+ 800c958:	08000354 	.word	0x08000354
+ 800c95c:	0800039a 	.word	0x0800039a
+ 800c960:	080003c0 	.word	0x080003c0
+ 800c964:	080003d3 	.word	0x080003d3
+ 800c968:	080009c5 	.word	0x080009c5
+ 800c96c:	080003e2 	.word	0x080003e2
 	printf("Flash erase finished.\n\r");
  800c970:	488a      	ldr	r0, [pc, #552]	; (800cb9c <Write_Flash+0x3c4>)
 			fr = f_read(&SDFile, &data, 4, &num);
@@ -1654,29 +1654,29 @@ uint8_t Write_Flash(uint8_t ID_mem, char *name, uint16_t version,
  800cb96:	2009      	movs	r0, #9
  800cb98:	e65f      	b.n	800c85a <Write_Flash+0x82>
  800cb9a:	bf00      	nop
- 800cb9c:	08017a20 	.word	0x08017a20
- 800cba0:	08017a38 	.word	0x08017a38
+ 800cb9c:	080003f8 	.word	0x080003f8
+ 800cba0:	08000410 	.word	0x08000410
  800cba4:	20001784 	.word	0x20001784
- 800cba8:	08017a90 	.word	0x08017a90
- 800cbac:	08017fed 	.word	0x08017fed
+ 800cba8:	08000468 	.word	0x08000468
+ 800cbac:	080009c5 	.word	0x080009c5
  800cbb0:	200027b4 	.word	0x200027b4
- 800cbb4:	08017a9f 	.word	0x08017a9f
- 800cbb8:	08017acf 	.word	0x08017acf
- 800cbbc:	08017ae5 	.word	0x08017ae5
- 800cbc0:	08017b58 	.word	0x08017b58
- 800cbc4:	08017b68 	.word	0x08017b68
- 800cbc8:	08017b7f 	.word	0x08017b7f
- 800cbcc:	08017b9f 	.word	0x08017b9f
- 800cbd0:	08017bb4 	.word	0x08017bb4
- 800cbd4:	08017bc8 	.word	0x08017bc8
- 800cbd8:	08017bdb 	.word	0x08017bdb
- 800cbdc:	08017a52 	.word	0x08017a52
- 800cbe0:	08017ab7 	.word	0x08017ab7
- 800cbe4:	08017afd 	.word	0x08017afd
- 800cbe8:	08017b17 	.word	0x08017b17
- 800cbec:	08017a73 	.word	0x08017a73
+ 800cbb4:	08000477 	.word	0x08000477
+ 800cbb8:	080004a7 	.word	0x080004a7
+ 800cbbc:	080004bd 	.word	0x080004bd
+ 800cbc0:	08000530 	.word	0x08000530
+ 800cbc4:	08000540 	.word	0x08000540
+ 800cbc8:	08000557 	.word	0x08000557
+ 800cbcc:	08000577 	.word	0x08000577
+ 800cbd0:	0800058c 	.word	0x0800058c
+ 800cbd4:	080005a0 	.word	0x080005a0
+ 800cbd8:	080005b3 	.word	0x080005b3
+ 800cbdc:	0800042a 	.word	0x0800042a
+ 800cbe0:	0800048f 	.word	0x0800048f
+ 800cbe4:	080004d5 	.word	0x080004d5
+ 800cbe8:	080004ef 	.word	0x080004ef
+ 800cbec:	0800044b 	.word	0x0800044b
  800cbf0:	08020000 	.word	0x08020000
- 800cbf4:	08017b3a 	.word	0x08017b3a
+ 800cbf4:	08000512 	.word	0x08000512
 
 0800cbf8 <MX_CRC_Init>:
 
@@ -4153,14 +4153,14 @@ void SystemClock_Config(void)
  800db48:	f89d 2024 	ldrb.w	r2, [sp, #36]	; 0x24
  800db4c:	9400      	str	r4, [sp, #0]
  800db4e:	f7ff fd3a 	bl	800d5c6 <draw_bmp_h>
-		f_mount(&SDFatFS, "", 1);
- 800db52:	2201      	movs	r2, #1
- 800db54:	493c      	ldr	r1, [pc, #240]	; (800dc48 <main+0x378>)
- 800db56:	4829      	ldr	r0, [pc, #164]	; (800dbfc <main+0x32c>)
- 800db58:	f007 fdfc 	bl	8015754 <f_mount>
-		bmp_img_free(&img);
- 800db5c:	a805      	add	r0, sp, #20
- 800db5e:	f7ff fdcc 	bl	800d6fa <bmp_img_free>
+			bmp_img_free(&img);
+ 800db52:	a805      	add	r0, sp, #20
+ 800db54:	f7ff fdd1 	bl	800d6fa <bmp_img_free>
+		f_mount(NULL, "0:", 1);
+ 800db58:	2201      	movs	r2, #1
+ 800db5a:	493b      	ldr	r1, [pc, #236]	; (800dc48 <main+0x378>)
+ 800db5c:	2000      	movs	r0, #0
+ 800db5e:	f007 fdf9 	bl	8015754 <f_mount>
 		draw_rectangle(0, 0, 127 , 63,1);
  800db62:	2100      	movs	r1, #0
  800db64:	2301      	movs	r3, #1
@@ -4178,7 +4178,7 @@ void SystemClock_Config(void)
 			printf("bmp file error\n\r");
  800db80:	4832      	ldr	r0, [pc, #200]	; (800dc4c <main+0x37c>)
  800db82:	f008 fca7 	bl	80164d4 <iprintf>
- 800db86:	e7e4      	b.n	800db52 <main+0x282>
+ 800db86:	e7e7      	b.n	800db58 <main+0x288>
 		if (BTNcounter == 20) {
  800db88:	2c14      	cmp	r4, #20
  800db8a:	d10d      	bne.n	800dba8 <main+0x2d8>
@@ -4216,42 +4216,42 @@ void SystemClock_Config(void)
  800dbca:	e768      	b.n	800da9e <main+0x1ce>
  800dbcc:	200016d4 	.word	0x200016d4
  800dbd0:	10000000 	.word	0x10000000
- 800dbd4:	08017c10 	.word	0x08017c10
- 800dbd8:	08017c64 	.word	0x08017c64
- 800dbdc:	08017cb6 	.word	0x08017cb6
- 800dbe0:	08017d08 	.word	0x08017d08
- 800dbe4:	08017d2f 	.word	0x08017d2f
+ 800dbd4:	080005e8 	.word	0x080005e8
+ 800dbd8:	0800063c 	.word	0x0800063c
+ 800dbdc:	0800068e 	.word	0x0800068e
+ 800dbe0:	080006e0 	.word	0x080006e0
+ 800dbe4:	08000707 	.word	0x08000707
  800dbe8:	20000004 	.word	0x20000004
- 800dbec:	08017d48 	.word	0x08017d48
- 800dbf0:	08017d5f 	.word	0x08017d5f
+ 800dbec:	08000720 	.word	0x08000720
+ 800dbf0:	08000737 	.word	0x08000737
  800dbf4:	40021000 	.word	0x40021000
  800dbf8:	2000177d 	.word	0x2000177d
  800dbfc:	2000481c 	.word	0x2000481c
- 800dc00:	08017d79 	.word	0x08017d79
- 800dc04:	08017fed 	.word	0x08017fed
- 800dc08:	08017da4 	.word	0x08017da4
- 800dc0c:	08017df0 	.word	0x08017df0
- 800dc10:	08017e0b 	.word	0x08017e0b
- 800dc14:	08017e1c 	.word	0x08017e1c
- 800dc18:	08017e58 	.word	0x08017e58
- 800dc1c:	08017e60 	.word	0x08017e60
- 800dc20:	08017e77 	.word	0x08017e77
- 800dc24:	08017e8e 	.word	0x08017e8e
- 800dc28:	08017ea6 	.word	0x08017ea6
- 800dc2c:	08017eb9 	.word	0x08017eb9
- 800dc30:	08017ed3 	.word	0x08017ed3
- 800dc34:	08017f0d 	.word	0x08017f0d
- 800dc38:	08017f16 	.word	0x08017f16
- 800dc3c:	08017f2e 	.word	0x08017f2e
- 800dc40:	08017f49 	.word	0x08017f49
- 800dc44:	08017d8a 	.word	0x08017d8a
- 800dc48:	08017efd 	.word	0x08017efd
- 800dc4c:	08017d93 	.word	0x08017d93
- 800dc50:	08017dd8 	.word	0x08017dd8
- 800dc54:	08017ee3 	.word	0x08017ee3
- 800dc58:	08017efe 	.word	0x08017efe
+ 800dc00:	08000751 	.word	0x08000751
+ 800dc04:	080009c5 	.word	0x080009c5
+ 800dc08:	0800077c 	.word	0x0800077c
+ 800dc0c:	080007c8 	.word	0x080007c8
+ 800dc10:	080007e3 	.word	0x080007e3
+ 800dc14:	080007f4 	.word	0x080007f4
+ 800dc18:	08000830 	.word	0x08000830
+ 800dc1c:	08000838 	.word	0x08000838
+ 800dc20:	0800084f 	.word	0x0800084f
+ 800dc24:	08000866 	.word	0x08000866
+ 800dc28:	0800087e 	.word	0x0800087e
+ 800dc2c:	08000891 	.word	0x08000891
+ 800dc30:	080008ab 	.word	0x080008ab
+ 800dc34:	080008e5 	.word	0x080008e5
+ 800dc38:	080008ee 	.word	0x080008ee
+ 800dc3c:	08000906 	.word	0x08000906
+ 800dc40:	08000921 	.word	0x08000921
+ 800dc44:	08000762 	.word	0x08000762
+ 800dc48:	08000281 	.word	0x08000281
+ 800dc4c:	0800076b 	.word	0x0800076b
+ 800dc50:	080007b0 	.word	0x080007b0
+ 800dc54:	080008bb 	.word	0x080008bb
+ 800dc58:	080008d6 	.word	0x080008d6
  800dc5c:	40020400 	.word	0x40020400
- 800dc60:	08017db2 	.word	0x08017db2
+ 800dc60:	0800078a 	.word	0x0800078a
 	} else if (sharedmem == WRITE_FROM_SD || sharedmem == FORCE_WRITE_FROM_SD) {
  800dc64:	f023 0702 	bic.w	r7, r3, #2
  800dc68:	2f01      	cmp	r7, #1
@@ -4394,22 +4394,22 @@ void SystemClock_Config(void)
  800dd82:	4631      	mov	r1, r6
  800dd84:	e7ac      	b.n	800dce0 <main+0x410>
  800dd86:	bf00      	nop
- 800dd88:	08017fed 	.word	0x08017fed
- 800dd8c:	08017e58 	.word	0x08017e58
- 800dd90:	08017e60 	.word	0x08017e60
- 800dd94:	08017e77 	.word	0x08017e77
- 800dd98:	08017e8e 	.word	0x08017e8e
- 800dd9c:	08017ea6 	.word	0x08017ea6
- 800dda0:	08017eb9 	.word	0x08017eb9
- 800dda4:	08017ed3 	.word	0x08017ed3
- 800dda8:	08017f90 	.word	0x08017f90
- 800ddac:	08017f99 	.word	0x08017f99
- 800ddb0:	08017fc2 	.word	0x08017fc2
- 800ddb4:	08017ee3 	.word	0x08017ee3
- 800ddb8:	08017efe 	.word	0x08017efe
- 800ddbc:	08017f88 	.word	0x08017f88
- 800ddc0:	08017f5a 	.word	0x08017f5a
- 800ddc4:	08017f78 	.word	0x08017f78
+ 800dd88:	080009c5 	.word	0x080009c5
+ 800dd8c:	08000830 	.word	0x08000830
+ 800dd90:	08000838 	.word	0x08000838
+ 800dd94:	0800084f 	.word	0x0800084f
+ 800dd98:	08000866 	.word	0x08000866
+ 800dd9c:	0800087e 	.word	0x0800087e
+ 800dda0:	08000891 	.word	0x08000891
+ 800dda4:	080008ab 	.word	0x080008ab
+ 800dda8:	08000968 	.word	0x08000968
+ 800ddac:	08000971 	.word	0x08000971
+ 800ddb0:	0800099a 	.word	0x0800099a
+ 800ddb4:	080008bb 	.word	0x080008bb
+ 800ddb8:	080008d6 	.word	0x080008d6
+ 800ddbc:	08000960 	.word	0x08000960
+ 800ddc0:	08000932 	.word	0x08000932
+ 800ddc4:	08000950 	.word	0x08000950
 
 0800ddc8 <HAL_TIM_PeriodElapsedCallback>:
   */
@@ -6716,7 +6716,7 @@ LoopFillZerobss:
   ldr   sp, =_estack     /* set stack pointer */
  800e96c:	20020000 	.word	0x20020000
   ldr  r3, =_sidata
- 800e970:	08018ac0 	.word	0x08018ac0
+ 800e970:	080177c0 	.word	0x080177c0
   ldr  r0, =_sdata
  800e974:	20000000 	.word	0x20000000
   ldr  r3, =_edata
@@ -7142,7 +7142,7 @@ static uint32_t DMA_CalcBaseAndBitshift(DMA_HandleTypeDef *hdma)
  800eb46:	6d80      	ldr	r0, [r0, #88]	; 0x58
  800eb48:	4770      	bx	lr
  800eb4a:	bf00      	nop
- 800eb4c:	08018487 	.word	0x08018487
+ 800eb4c:	08000e5f 	.word	0x08000e5f
 
 0800eb50 <HAL_DMA_Init>:
 {
@@ -10852,7 +10852,7 @@ __weak HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruc
  8010246:	e78b      	b.n	8010160 <HAL_RCC_ClockConfig+0x38>
  8010248:	40023c00 	.word	0x40023c00
  801024c:	40023800 	.word	0x40023800
- 8010250:	08017fd5 	.word	0x08017fd5
+ 8010250:	080009ad 	.word	0x080009ad
  8010254:	20000058 	.word	0x20000058
  8010258:	20000060 	.word	0x20000060
 
@@ -10874,7 +10874,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  801026c:	40d8      	lsrs	r0, r3
  801026e:	4770      	bx	lr
  8010270:	40023800 	.word	0x40023800
- 8010274:	08017fe5 	.word	0x08017fe5
+ 8010274:	080009bd 	.word	0x080009bd
  8010278:	20000058 	.word	0x20000058
 
 0801027c <HAL_RCC_GetPCLK2Freq>:
@@ -10895,7 +10895,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  801028c:	40d8      	lsrs	r0, r3
  801028e:	4770      	bx	lr
  8010290:	40023800 	.word	0x40023800
- 8010294:	08017fe5 	.word	0x08017fe5
+ 8010294:	080009bd 	.word	0x080009bd
  8010298:	20000058 	.word	0x20000058
 
 0801029c <HAL_RCC_GetClockConfig>:
@@ -17819,10 +17819,10 @@ void MX_FATFS_Init(void)
 }
  8012aa2:	bd08      	pop	{r3, pc}
  8012aa4:	2000177d 	.word	0x2000177d
- 8012aa8:	08018490 	.word	0x08018490
+ 8012aa8:	08000e68 	.word	0x08000e68
  8012aac:	20001778 	.word	0x20001778
  8012ab0:	20001779 	.word	0x20001779
- 8012ab4:	080184a4 	.word	0x080184a4
+ 8012ab4:	08000e7c 	.word	0x08000e7c
  8012ab8:	20005854 	.word	0x20005854
 
 08012abc <get_fattime>:
@@ -24800,7 +24800,7 @@ DWORD get_fat (	/* 0xFFFFFFFF:Disk error, 1:Internal error, 2..0x7FFFFFFF:Cluste
 		if (c == 0) { res = FR_NO_FILE; break; }	/* Reached to end of table */
  801526e:	f04f 0804 	mov.w	r8, #4
  8015272:	e7f8      	b.n	8015266 <dir_find+0x152>
- 8015274:	0801853c 	.word	0x0801853c
+ 8015274:	08000f14 	.word	0x08000f14
 
 08015278 <dir_register>:
 {
@@ -25136,7 +25136,7 @@ DWORD get_fat (	/* 0xFFFFFFFF:Disk error, 1:Internal error, 2..0x7FFFFFFF:Cluste
  80154d6:	2301      	movs	r3, #1
  80154d8:	70fb      	strb	r3, [r7, #3]
  80154da:	e737      	b.n	801534c <dir_register+0xd4>
- 80154dc:	0801853c 	.word	0x0801853c
+ 80154dc:	08000f14 	.word	0x08000f14
  80154e0:	00011021 	.word	0x00011021
 
 080154e4 <follow_path>:
@@ -25447,9 +25447,9 @@ DWORD get_fat (	/* 0xFFFFFFFF:Disk error, 1:Internal error, 2..0x7FFFFFFF:Cluste
  8015740:	f045 0501 	orrls.w	r5, r5, #1
  8015744:	b280      	uxthls	r0, r0
  8015746:	e773      	b.n	8015630 <follow_path+0x14c>
- 8015748:	08018548 	.word	0x08018548
- 801574c:	080184bc 	.word	0x080184bc
- 8015750:	08018551 	.word	0x08018551
+ 8015748:	08000f20 	.word	0x08000f20
+ 801574c:	08000e94 	.word	0x08000e94
+ 8015750:	08000f29 	.word	0x08000f29
 
 08015754 <f_mount>:
 FRESULT f_mount (
@@ -26912,7 +26912,7 @@ uint8_t FATFS_UnLinkDriver(char *path)
  8015f5e:	2000      	movs	r0, #0
  8015f60:	e7ee      	b.n	8015f40 <ff_convert+0x14>
  8015f62:	bf00      	nop
- 8015f64:	0801855a 	.word	0x0801855a
+ 8015f64:	08000f32 	.word	0x08000f32
 
 08015f68 <ff_wtoupper>:
 
@@ -27004,8 +27004,8 @@ WCHAR ff_wtoupper (	/* Returns upper converted character */
  8015fdc:	eb02 0344 	add.w	r3, r2, r4, lsl #1
  8015fe0:	e7c9      	b.n	8015f76 <ff_wtoupper+0xe>
  8015fe2:	bf00      	nop
- 8015fe4:	0801865a 	.word	0x0801865a
- 8015fe8:	0801884c 	.word	0x0801884c
+ 8015fe4:	08001032 	.word	0x08001032
+ 8015fe8:	08001224 	.word	0x08001224
 
 08015fec <USBH_UserProcess>:
  * user callback definition
@@ -27348,7 +27348,7 @@ USBH_StatusTypeDef USBH_LL_Start(USBH_HandleTypeDef *phost)
 }
  8016188:	bd08      	pop	{r3, pc}
  801618a:	bf00      	nop
- 801618c:	0801890b 	.word	0x0801890b
+ 801618c:	080012e3 	.word	0x080012e3
 
 08016190 <USBH_LL_Stop>:
   * @brief  Stop the low level portion of the host driver.
@@ -27376,7 +27376,7 @@ USBH_StatusTypeDef USBH_LL_Stop(USBH_HandleTypeDef *phost)
 }
  80161a4:	bd08      	pop	{r3, pc}
  80161a6:	bf00      	nop
- 80161a8:	0801890b 	.word	0x0801890b
+ 80161a8:	080012e3 	.word	0x080012e3
 
 080161ac <USBH_LL_GetSpeed>:
   * @brief  Return the USB host speed from the low level driver.
@@ -27404,7 +27404,7 @@ USBH_SpeedTypeDef USBH_LL_GetSpeed(USBH_HandleTypeDef *phost)
 }
  80161c0:	bd08      	pop	{r3, pc}
  80161c2:	bf00      	nop
- 80161c4:	08018908 	.word	0x08018908
+ 80161c4:	080012e0 	.word	0x080012e0
 
 080161c8 <USBH_LL_ResetPort>:
   * @brief  Reset the Host port of the low level driver.
@@ -27432,7 +27432,7 @@ USBH_StatusTypeDef USBH_LL_ResetPort(USBH_HandleTypeDef *phost)
 }
  80161dc:	bd08      	pop	{r3, pc}
  80161de:	bf00      	nop
- 80161e0:	0801890b 	.word	0x0801890b
+ 80161e0:	080012e3 	.word	0x080012e3
 
 080161e4 <USBH_LL_GetLastXferSize>:
   * @param  pipe: Pipe index
@@ -27478,7 +27478,7 @@ USBH_StatusTypeDef USBH_LL_OpenPipe(USBH_HandleTypeDef *phost, uint8_t pipe_num,
  8016212:	b004      	add	sp, #16
  8016214:	bd10      	pop	{r4, pc}
  8016216:	bf00      	nop
- 8016218:	0801890b 	.word	0x0801890b
+ 8016218:	080012e3 	.word	0x080012e3
 
 0801621c <USBH_LL_ClosePipe>:
   * @param  phost: Host handle
@@ -27506,7 +27506,7 @@ USBH_StatusTypeDef USBH_LL_ClosePipe(USBH_HandleTypeDef *phost, uint8_t pipe)
 }
  8016230:	bd08      	pop	{r3, pc}
  8016232:	bf00      	nop
- 8016234:	0801890b 	.word	0x0801890b
+ 8016234:	080012e3 	.word	0x080012e3
 
 08016238 <USBH_LL_SubmitURB>:
   * @retval Status
@@ -27544,7 +27544,7 @@ USBH_StatusTypeDef USBH_LL_SubmitURB(USBH_HandleTypeDef *phost, uint8_t pipe, ui
  8016262:	b004      	add	sp, #16
  8016264:	bd10      	pop	{r4, pc}
  8016266:	bf00      	nop
- 8016268:	0801890b 	.word	0x0801890b
+ 8016268:	080012e3 	.word	0x080012e3
 
 0801626c <USBH_LL_GetURBState>:
   *            @arg URB_ERROR
@@ -27702,10 +27702,10 @@ void USBH_Delay(uint32_t Delay)
  8016326:	4798      	blx	r3
  8016328:	3501      	adds	r5, #1
  801632a:	e7f2      	b.n	8016312 <__libc_init_array+0x1e>
- 801632c:	08018ab8 	.word	0x08018ab8
- 8016330:	08018ab8 	.word	0x08018ab8
- 8016334:	08018ab8 	.word	0x08018ab8
- 8016338:	08018abc 	.word	0x08018abc
+ 801632c:	080177b8 	.word	0x080177b8
+ 8016330:	080177b8 	.word	0x080177b8
+ 8016334:	080177b8 	.word	0x080177b8
+ 8016338:	080177bc 	.word	0x080177bc
 
 0801633c <malloc>:
  801633c:	4b02      	ldr	r3, [pc, #8]	; (8016348 <malloc+0xc>)
@@ -28075,9 +28075,9 @@ void USBH_Delay(uint32_t Delay)
  801666c:	e7bb      	b.n	80165e6 <setvbuf+0xc2>
  801666e:	bf00      	nop
  8016670:	20000088 	.word	0x20000088
- 8016674:	08018934 	.word	0x08018934
- 8016678:	08018954 	.word	0x08018954
- 801667c:	08018914 	.word	0x08018914
+ 8016674:	0800130c 	.word	0x0800130c
+ 8016678:	0800132c 	.word	0x0800132c
+ 801667c:	080012ec 	.word	0x080012ec
 
 08016680 <siprintf>:
  8016680:	b40e      	push	{r1, r2, r3}
@@ -28398,9 +28398,9 @@ void USBH_Delay(uint32_t Delay)
  8016942:	2000      	movs	r0, #0
  8016944:	bd38      	pop	{r3, r4, r5, pc}
  8016946:	bf00      	nop
- 8016948:	08018934 	.word	0x08018934
- 801694c:	08018954 	.word	0x08018954
- 8016950:	08018914 	.word	0x08018914
+ 8016948:	0800130c 	.word	0x0800130c
+ 801694c:	0800132c 	.word	0x0800132c
+ 8016950:	080012ec 	.word	0x080012ec
 
 08016954 <std>:
  8016954:	2300      	movs	r3, #0
@@ -28496,7 +28496,7 @@ void USBH_Delay(uint32_t Delay)
  8016a26:	2301      	movs	r3, #1
  8016a28:	61a3      	str	r3, [r4, #24]
  8016a2a:	bd10      	pop	{r4, pc}
- 8016a2c:	08018910 	.word	0x08018910
+ 8016a2c:	080012e8 	.word	0x080012e8
  8016a30:	0801699d 	.word	0x0801699d
 
 08016a34 <__sfp>:
@@ -28545,7 +28545,7 @@ void USBH_Delay(uint32_t Delay)
  8016a9c:	e9c4 5512 	strd	r5, r5, [r4, #72]	; 0x48
  8016aa0:	e7e9      	b.n	8016a76 <__sfp+0x42>
  8016aa2:	bf00      	nop
- 8016aa4:	08018910 	.word	0x08018910
+ 8016aa4:	080012e8 	.word	0x080012e8
  8016aa8:	ffff0001 	.word	0xffff0001
 
 08016aac <_fwalk_reent>:
@@ -28971,9 +28971,9 @@ void USBH_Delay(uint32_t Delay)
  8016e68:	f000 f9c2 	bl	80171f0 <_printf_i>
  8016e6c:	e7ea      	b.n	8016e44 <_svfiprintf_r+0x1b0>
  8016e6e:	bf00      	nop
- 8016e70:	0801897a 	.word	0x0801897a
- 8016e74:	08018980 	.word	0x08018980
- 8016e78:	08018984 	.word	0x08018984
+ 8016e70:	08001352 	.word	0x08001352
+ 8016e74:	08001358 	.word	0x08001358
+ 8016e78:	0800135c 	.word	0x0800135c
  8016e7c:	00000000 	.word	0x00000000
  8016e80:	08016be1 	.word	0x08016be1
 
@@ -29236,12 +29236,12 @@ void USBH_Delay(uint32_t Delay)
  80170dc:	f000 f888 	bl	80171f0 <_printf_i>
  80170e0:	e7ec      	b.n	80170bc <_vfiprintf_r+0x1e4>
  80170e2:	bf00      	nop
- 80170e4:	08018934 	.word	0x08018934
- 80170e8:	0801897a 	.word	0x0801897a
- 80170ec:	08018954 	.word	0x08018954
- 80170f0:	08018914 	.word	0x08018914
- 80170f4:	08018980 	.word	0x08018980
- 80170f8:	08018984 	.word	0x08018984
+ 80170e4:	0800130c 	.word	0x0800130c
+ 80170e8:	08001352 	.word	0x08001352
+ 80170ec:	0800132c 	.word	0x0800132c
+ 80170f0:	080012ec 	.word	0x080012ec
+ 80170f4:	08001358 	.word	0x08001358
+ 80170f8:	0800135c 	.word	0x0800135c
  80170fc:	00000000 	.word	0x00000000
  8017100:	08016eb3 	.word	0x08016eb3
 
@@ -29577,8 +29577,8 @@ void USBH_Delay(uint32_t Delay)
  8017402:	f884 3042 	strb.w	r3, [r4, #66]	; 0x42
  8017406:	f104 0542 	add.w	r5, r4, #66	; 0x42
  801740a:	e76c      	b.n	80172e6 <_printf_i+0xf6>
- 801740c:	0801898b 	.word	0x0801898b
- 8017410:	0801899c 	.word	0x0801899c
+ 801740c:	08001363 	.word	0x08001363
+ 8017410:	08001374 	.word	0x08001374
 
 08017414 <__sread>:
  8017414:	b510      	push	{r4, lr}
@@ -29712,9 +29712,9 @@ void USBH_Delay(uint32_t Delay)
  801752e:	4638      	mov	r0, r7
  8017530:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
  8017532:	bf00      	nop
- 8017534:	08018934 	.word	0x08018934
- 8017538:	08018954 	.word	0x08018954
- 801753c:	08018914 	.word	0x08018914
+ 8017534:	0800130c 	.word	0x0800130c
+ 8017538:	0800132c 	.word	0x0800132c
+ 801753c:	080012ec 	.word	0x080012ec
 
 08017540 <__ascii_wctomb>:
  8017540:	b149      	cbz	r1, 8017556 <__ascii_wctomb+0x16>
@@ -29839,9 +29839,9 @@ void USBH_Delay(uint32_t Delay)
  8017648:	e7f7      	b.n	801763a <__swsetup_r+0xba>
  801764a:	bf00      	nop
  801764c:	20000088 	.word	0x20000088
- 8017650:	08018934 	.word	0x08018934
- 8017654:	08018954 	.word	0x08018954
- 8017658:	08018914 	.word	0x08018914
+ 8017650:	0800130c 	.word	0x0800130c
+ 8017654:	0800132c 	.word	0x0800132c
+ 8017658:	080012ec 	.word	0x080012ec
 
 0801765c <_close_r>:
  801765c:	b538      	push	{r3, r4, r5, lr}

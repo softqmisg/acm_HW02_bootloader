@@ -140,12 +140,14 @@ int main(void)
 	} else {
 		bmp_img img;
 		if (bmp_img_read(&img, "logo.bmp") == BMP_OK)
+		{
 			draw_bmp_h(0, 0, img.img_header.biWidth, img.img_header.biHeight,
 					img.img_pixels, 1);
+			bmp_img_free(&img);
+		}
 		else
 			printf("bmp file error\n\r");
-		f_mount(&SDFatFS, "", 1);
-		bmp_img_free(&img);
+		f_mount(NULL, "0:", 1);
 		draw_rectangle(0, 0, 127 , 63,1);
 		glcd_refresh();
 		HAL_Delay(1000);
