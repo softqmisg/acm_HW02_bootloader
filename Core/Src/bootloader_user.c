@@ -88,33 +88,37 @@ uint8_t Check_SDCard(char *firmware_path, uint16_t *firmware_version,
 		return FILE_OPEN_FAIL;
 	}
 	f_gets(readline, 100, &SDFile);
+	readline[strlen(readline) - 1] = 0;
+	*firmware_version = atol(readline);
+//	HAL_Delay(50);
 //	if (fr != FR_OK) {
 //		printf("File cannot be read.\n\r");
 //		printf("FatFs error code: %u\n\r", fr);
-//		f_mount(NULL, (TCHAR const*) SDPath, 0);
+//		f_mount(NULL, (TCHAR const*) USBHPath, 0);
 //		return FILE_READ_FAIL;
 //	}
-	*firmware_version = atol(readline);
-	f_gets(firmware_path, 100, &SDFile);
-	uint8_t index = 0;
-	while (*(firmware_path + index) != '\n' || *(firmware_path + index) != '\r')
-		index++;
-	firmware_path[index] = '\0';
+
+	f_gets(readline, 100, &SDFile);
+	readline[strlen(readline) - 1] = 0;
+	sprintf(firmware_path, "%s", readline);
+
 //	if (fr != FR_OK) {
 //		printf("File cannot be read.\n\r");
 //		printf("FatFs error code: %u\n\r", fr);
-//		f_mount(NULL, (TCHAR const*) SDPath, 0);
+//		f_mount(NULL, (TCHAR const*) USBHPath, 0);
 //		return FILE_READ_FAIL;
 //	}
 	f_gets(readline, 100, &SDFile);
+	readline[strlen(readline) - 1] = 0;
+	*firmware_checksum = atol(readline);
+	HAL_Delay(50);
 //	if (fr != FR_OK) {
 //		printf("File cannot be read.\n\r");
 //		printf("FatFs error code: %u\n\r", fr);
-//		f_mount(NULL, (TCHAR const*) SDPath, 0);
+//		f_mount(NULL, (TCHAR const*) USBHPath, 0);
 //		return FILE_READ_FAIL;
 //	}
-	*firmware_checksum = atol(readline);
-	fclose(&SDFile);
+	f_close(&SDFile);
 	f_mount(NULL, (TCHAR const*) SDPath, 0);
 	return MEM_CHECK_OK;
 }
