@@ -18,7 +18,7 @@
 <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.swv_trace_hclk" value="16000000"/>
 <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.useRemoteTarget" value="true"/>
 <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.vector_table" value=""/>
-<booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.verify_flash_download" value="true"/>
+<booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.verify_flash_download" value="false"/>
 <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.cti_allow_halt" value="false"/>
 <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.cti_signal_halt" value="false"/>
 <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.enable_external_loader" value="false"/>
@@ -45,7 +45,7 @@
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.jtagDevice" value="ST-LINK (ST-LINK GDB server)"/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.pcRegister" value=""/>
 <intAttribute key="org.eclipse.cdt.debug.gdbjtag.core.portNumber" value="61234"/>
-<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.runCommands" value=""/>
+<stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.runCommands" value="add-symbol-file ../acm_HW02_min_feature/Debug/acm_HW02_min_feature.elf 0x8020190&#13;&#10;b main&#13;&#10;b app_main"/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setPcRegister" value="false"/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setResume" value="true"/>
 <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setStopAt" value="true"/>
