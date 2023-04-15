@@ -23,6 +23,7 @@
 #include "st7565.h"
 #include "libbmp.h"
 #include "eeprom.h"
+#include "images/acm_logo.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -135,6 +136,7 @@ int main(void)
 	glcd_flip_screen(XLR_YTB);
 	FIL myfile;
 	FRESULT fr;
+#if 0
 	if ((fr = f_mount(&SDFatFS, (TCHAR const*) SDPath, 1)) != FR_OK) {
 		printf("error mount SD\n\r");
 	} else {
@@ -150,12 +152,18 @@ int main(void)
 		f_mount(NULL, "0:", 1);
 		draw_rectangle(0, 0, 127 , 63,1);
 		glcd_refresh();
-		HAL_Delay(1000);
+
 	}
+#endif
+	draw_bmp_h(0,0,aCAM_logo_128_02_H[0],aCAM_logo_128_02_H[2],&aCAM_logo_128_02_H[4],1);
+	draw_box(0, 0, 127, 63, 1);
+	glcd_refresh();
+	HAL_Delay(2000);
 	glcd_blank();
 
-	draw_text("Bootloader...", 0, 0, Tahoma8, 1, 0);
-	glcd_refresh();
+//	draw_text("Bootloader...", 0, 0, Tahoma8, 1, 0);
+//	glcd_refresh();
+//	HAL_Delay(2000);
 	////////////////////////////////////////////////////////////////////////////
 	uint8_t BTNcounter = 0;
 	uint8_t result_usb = MEM_NOT_PRESENT, result_sd = MEM_NOT_PRESENT;
@@ -183,6 +191,7 @@ int main(void)
 			glcd_blank();
 			draw_text("Goto Application", 0, 0, Tahoma8, 1, 0);
 			glcd_refresh();
+			HAL_Delay(2000);
 			goto_application();
 			printf(
 					"Application was not present, try flashed it from SD & USB\n\r");
