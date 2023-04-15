@@ -12217,37 +12217,37 @@ OUTPUT(acm_bootloader01.elf elf32-littlearm)
 .debug_str      0x0000000000000000    0xe1267
  .debug_str     0x0000000000000000    0xcfa42 Core/Src/bootloader.o
                                       0xcfd4c (size before relaxing)
- .debug_str     0x00000000000cfa42     0x89d5 Core/Src/bootloader_user.o
+ .debug_str     0x00000000000cfa42     0x8994 Core/Src/bootloader_user.o
                                       0xd859e (size before relaxing)
- .debug_str     0x00000000000d8417      0x10d Core/Src/crc.o
+ .debug_str     0x00000000000d83d6      0x10d Core/Src/crc.o
                                       0xcfcd7 (size before relaxing)
- .debug_str     0x00000000000d8524      0x53a Core/Src/dma.o
+ .debug_str     0x00000000000d84e3      0x53a Core/Src/dma.o
                                       0xd00a2 (size before relaxing)
- .debug_str     0x00000000000d8a5e      0x127 Core/Src/eeprom.o
+ .debug_str     0x00000000000d8a1d      0x127 Core/Src/eeprom.o
                                       0xcfa79 (size before relaxing)
- .debug_str     0x00000000000d8b85       0xce Core/Src/gpio.o
+ .debug_str     0x00000000000d8b44       0xce Core/Src/gpio.o
                                       0xcfc74 (size before relaxing)
- .debug_str     0x00000000000d8c53      0x14a Core/Src/graphics.o
+ .debug_str     0x00000000000d8c12      0x14a Core/Src/graphics.o
                                       0xd386f (size before relaxing)
- .debug_str     0x00000000000d8d9d       0x3d Core/Src/iwdg.o
+ .debug_str     0x00000000000d8d5c       0x3d Core/Src/iwdg.o
                                       0xcfb24 (size before relaxing)
- .debug_str     0x00000000000d8dda      0x86f Core/Src/main.o
+ .debug_str     0x00000000000d8d99      0x86f Core/Src/main.o
                                       0xd8cc7 (size before relaxing)
- .debug_str     0x00000000000d9649      0x616 Core/Src/retarget.o
+ .debug_str     0x00000000000d9608      0x616 Core/Src/retarget.o
                                       0xd45a3 (size before relaxing)
- .debug_str     0x00000000000d9c5f      0x11a Core/Src/rtc.o
+ .debug_str     0x00000000000d9c1e      0x11a Core/Src/rtc.o
                                       0xcfe03 (size before relaxing)
- .debug_str     0x00000000000d9d79       0x75 Core/Src/sdio.o
+ .debug_str     0x00000000000d9d38       0x75 Core/Src/sdio.o
                                       0xd0689 (size before relaxing)
- .debug_str     0x00000000000d9dee      0x165 Core/Src/st7565.o
+ .debug_str     0x00000000000d9dad      0x165 Core/Src/st7565.o
                                       0xd090f (size before relaxing)
- .debug_str     0x00000000000d9f53       0x2c Core/Src/stm32f4xx_hal_msp.o
+ .debug_str     0x00000000000d9f12       0x2c Core/Src/stm32f4xx_hal_msp.o
                                       0xcfb80 (size before relaxing)
- .debug_str     0x00000000000d9f7f       0xec Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_str     0x00000000000d9f3e       0xec Core/Src/stm32f4xx_hal_timebase_tim.o
                                       0xd0098 (size before relaxing)
- .debug_str     0x00000000000da06b      0x4ed Core/Src/stm32f4xx_it.o
+ .debug_str     0x00000000000da02a      0x4ed Core/Src/stm32f4xx_it.o
                                       0xd07ca (size before relaxing)
- .debug_str     0x00000000000da558       0x6b Core/Src/sysmem.o
+ .debug_str     0x00000000000da517       0xac Core/Src/sysmem.o
                                        0x5f85 (size before relaxing)
  .debug_str     0x00000000000da5c3       0x70 Core/Src/system_stm32f4xx.o
                                       0xcf697 (size before relaxing)
